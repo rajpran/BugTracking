@@ -14,6 +14,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
 
 @property (nonatomic, copy) NSString *errorMessage;
+@property (nonatomic, strong) NSMutableData *webData;
 
 - (IBAction)doLogin:(id)sender;
 
@@ -38,9 +39,61 @@
     //Textfield validation
     BOOL correctInput = [self validateUserInput:[[self userNameTextField] text] password:[[self passwordTextField] text]];
     
-//    if (correctInput) {
-//        <#statements#>
-//    }
+    if (correctInput) {
+        NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://na.az.com/soaplatform\" xmlns:urn=\"urn:astrazeneca:na:Employee:services:EmployeeDataInitiatior:2\">\n"
+                               "<soapenv:Header>\n"
+                               "<urn:HeaderParams>\n"
+                               "<appid>kiosk</appid>\n"
+                               "<CountryCode>US</CountryCode>\n"
+                               "</urn:HeaderParams>\n"
+                               "<wsse:Security xmlns:wsse=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd\">\n"
+                               "<wsse:UsernameToken>\n"
+                               "<wsse:Username>kzmg940</wsse:Username>\n"
+                               "<wsse:Password Type=\"http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordText\">d12srvepsh</wsse:Password>\n"
+                               "</wsse:UsernameToken>\n"
+                               "</wsse:Security>\n"
+                               " </soapenv:Header>\n"
+                                 "<soapenv:Body>\n"
+                               "<urn:AuthenticateUser>\n"
+                               "<urn:EmployeeId SystemCode=\"PRID\">%@</urn:EmployeeId>\n"
+                               "<!--Optional:-->\n"
+                               "<urn:domain>americas</urn:domain>\n"
+                               "<!--Optional:-->\n"
+                               "<urn:location>US</urn:location>\n"
+                               "</urn:AuthenticateUser>\n"
+                               "</soapenv:Body>\n"
+                               "</soapenv:Envelope>"
+                               ,self.userNameTextField.text];
+        
+        NSLog(@"XML request string:%@",soapMessage);
+        
+        NSData *envelope = [soapMessage dataUsingEncoding:NSUTF8StringEncoding];
+        
+        // construct request
+        
+        NSString *url = @"https://gateway.astrazeneca-us.com/dmnContact/EmployeeService";
+        NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url] cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:30.0];
+        [request addValue:@"http://na.az.com/soaplatform" forHTTPHeaderField:@"SOAPAction"];
+        [request setHTTPMethod:@"POST"];
+        [request setHTTPBody:envelope];
+        [request setValue:@"application/soap+xml; charset=utf-8"
+       forHTTPHeaderField:@"Content-Type"];
+        
+        [request setValue:[NSString stringWithFormat:@"%d", [envelope length]]forHTTPHeaderField:@"Content-Length"];
+        
+        // fire away
+        NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+        if (connection)
+            self.webData = [NSMutableData data];
+        else
+            NSLog(@"NSURLConnection initWithRequest: Failed to return a connection.");
+        
+    }else{
+        //Clear password field
+        self.passwordTextField.text = @"";
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:self.errorMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+        [alert show];
+    }
 }
 
 
@@ -65,6 +118,28 @@
         }
     }
     return validInput;
+}
+
+#pragma mark - NSURLConnection delegate methods
+-(void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response
+{
+    [self.webData setLength: 0];
+}
+-(void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data
+{
+    [self.webData appendData:data];
+}
+-(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
+{
+    NSLog(@"ERROR with theConenction");
+    
+}
+-(void)connectionDidFinishLoading:(NSURLConnection *)connection
+{
+    NSLog(@"DONE. Received Bytes: %d", [self.webData length]);
+    NSString *theXML = [[NSString alloc] initWithBytes:
+                        [self.webData mutableBytes] length:[self.webData length] encoding:NSUTF8StringEncoding];
+    NSLog(@"XML Reseponse:%@",theXML);
 }
 
 @end
