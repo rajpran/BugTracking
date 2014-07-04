@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface HomeViewController : UIViewController
+@property(strong, nonatomic) UIPopoverController *pickerPopover;
+@property (strong, nonatomic) IBOutlet UIView *popoverView;
 
 @end

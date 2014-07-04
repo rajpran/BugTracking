@@ -7,8 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
-
+@protocol SearchDelegate <NSObject>
+-(void)searchRemedy:(NSDictionary *) searchData;
+@end
 @interface PickerViewController : UIViewController
 @property NSString *selectedValue;
 @property NSMutableArray *pickerValues;
+@property (assign, nonatomic) id<SearchDelegate> delegate;
 @end

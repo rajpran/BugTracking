@@ -16,10 +16,28 @@
     UIButton *clickedButton;
     NSInteger lastselectedtag;
     ACEDropDown * aCEDropDown;
+    NSMutableArray *lovValues;
 }
 @property(strong, nonatomic) ESMImagePickerViewController *imagePickerViewController;
 @property(strong, nonatomic) NSMutableArray *eventMaterialArray;
 -(void) selectedSingleOption:(NSString *)selectedDict;
+@property(strong, nonatomic) IBOutlet UIView *leftView;
+@property(strong, nonatomic) IBOutlet UIView *rightView;
+@property (weak, nonatomic) IBOutlet UIButton *productType;
+@property (weak, nonatomic) IBOutlet UIButton *productButton;
+@property (weak, nonatomic) IBOutlet UIButton *incidentType;
+@property (weak, nonatomic) IBOutlet UIButton *priorityButton;
+@property (weak, nonatomic) IBOutlet UIButton *statusButton;
+@property (weak, nonatomic) IBOutlet UILabel *incidentIdLabel;
+@property (weak, nonatomic) IBOutlet UILabel *userIdLabel;
+
+@property (weak, nonatomic) IBOutlet UITextField *contactTextField;
+@property (weak, nonatomic) IBOutlet UITextView *summaryTextView;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
+@property (weak, nonatomic) IBOutlet UITextView *stepsTextView;
+@property (weak, nonatomic) IBOutlet UITextView *statusReasonTextView;
+@property (weak, nonatomic) IBOutlet UITextView *resolutionTextView;
+
 @end
 
 @implementation RemedyDetailsViewController
@@ -36,12 +54,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    lastselectedtag=-1;
     _eventMaterialArray = [[NSMutableArray alloc] init];
     //[_addEventMaterialsbutton setBackgroundImage:[UIImage imageNamed:@"Add_material.png"] forState:UIControlStateNormal];
     //[_addEventMaterialsbutton setBackgroundImage:[UIImage imageNamed:@"Add_material_Active.png"] forState:UIControlStateHighlighted];
     _materialsScrollView.layer.borderColor=[UIColor lightGrayColor].CGColor;
 	_materialsScrollView.layer.borderWidth = 1.0f;
-
+    [self setLovs];
 	// Do any additional setup after loading the view.
 }
 
@@ -49,6 +68,19 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)setLovs{
+    lovValues = [[NSMutableArray alloc] init];
+    [lovValues addObject:[[NSArray alloc]initWithObjects:@"Web Application",@"Mobile Application",nil]];
+    NSMutableDictionary *temp1 = [[NSMutableDictionary alloc] init];
+    
+    [temp1 setValue:[[NSArray alloc]initWithObjects:@"EFCF",@"KIOSK",@"Service Request",@"iCall",@"iHub",nil]  forKey:@"Mobile Application"];
+    [temp1 setValue:[[NSArray alloc]initWithObjects:@"EFCF Web",@"KIOSK Web",@"Service Request Web",nil]  forKey:@"Web Application"];
+
+    [lovValues addObject:temp1];
+    [lovValues addObject:[[NSArray alloc]initWithObjects:@"Query",@"Issue", nil]];
+    [lovValues addObject:[[NSArray alloc]initWithObjects:@"Critical",@"High",@"Medium",@"Low", nil]];
+    [lovValues addObject:[[NSArray alloc]initWithObjects:@"New",@"In progress",@"Assigned",@"Resolved", nil]];
 }
 -(IBAction)fromTheLibraryActions:(id)sender
 {
@@ -204,6 +236,7 @@
     }
     [self reloadEventMaterial];
 }
+
 -(IBAction)showPicker:(id)sender{
     if (lastselectedtag == [sender tag])
     {
@@ -216,15 +249,23 @@
         aCEDropDown=[[ACEDropDown alloc]init];
         
         UIButton *btnClicked=(UIButton *)sender;
-        
-        NSArray *categoryList=[[NSArray alloc]initWithObjects:@"Admin",@"Human Resources",@"Finance",@"Accomodation", nil];
+        NSArray *categoryList = [[NSArray alloc] init];
+        if([sender tag] == 1){
+            categoryList=[[lovValues objectAtIndex:[sender tag]] valueForKey:_productType.titleLabel.text];
+        }else{
+            categoryList=[lovValues objectAtIndex:[sender tag]];
+        }
         
         NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
         [dict setObject:categoryList forKey:@"dataSource"];
         [dict setObject:btnClicked forKey:@"button"];
         aCEDropDown=[[ACEDropDown alloc]initWithDropDwon:dict ];
         aCEDropDown.ddDelegate=self;
-        [self.view addSubview:aCEDropDown];
+        if ([sender tag]>2) {
+            [_rightView addSubview:aCEDropDown];
+        }else{
+            [_leftView addSubview:aCEDropDown];
+        }
         lastselectedtag = [sender tag];
         
         
@@ -233,6 +274,8 @@
 }
 -(void) selectedSingleOption:(NSDictionary *)selectedDict
 {
+    lastselectedtag = -1;
+
     
 }
 

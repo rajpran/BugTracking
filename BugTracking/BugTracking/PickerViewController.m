@@ -7,10 +7,21 @@
 //
 
 #import "PickerViewController.h"
+#import "ACEDropDown.h"
 
-@interface PickerViewController ()<UIPopoverControllerDelegate,UITableViewDelegate,UITableViewDataSource>
+@interface PickerViewController ()<UIPopoverControllerDelegate,ACEDropDownDelegate>{
+    UIButton *clickedButton;
+    NSInteger lastselectedtag;
+    ACEDropDown * aCEDropDown;
+    NSMutableArray *lovValues;
+}
 @property (weak, nonatomic) IBOutlet UITableView *pickerTableView;
-
+- (IBAction)showDatePicker:(id)sender;
+@property (strong, nonatomic) UIDatePicker *datePicker;
+@property (weak, nonatomic) IBOutlet UIButton *statusBtn;
+@property (weak, nonatomic) IBOutlet UIButton *priorityBtn;
+@property (weak, nonatomic) IBOutlet UIButton *dateButton;
+@property (strong, nonatomic) UIPopoverController *pickerPopover;
 @end
 
 @implementation PickerViewController
@@ -27,7 +38,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    [_pickerTableView reloadData];
+    lastselectedtag = -1;
+    [self setLovs];
 	// Do any additional setup after loading the view.
     
 }
@@ -38,22 +50,112 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
-    return 1;
+
+- (IBAction)showDatePicker:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    
+    NSDate *eventEndDate;
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    [df setDateFormat:@"yyyy/MM/dd HH:mm"];
+    
+    
+    
+    UIToolbar *pickerToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 375, 44)];
+    pickerToolbar.barStyle = UIBarStyleBlackOpaque;
+    [pickerToolbar sizeToFit];
+    NSMutableArray *barItems = [[NSMutableArray alloc] init];
+    UIBarButtonItem *doneBtn = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(pickerDone:)];
+    doneBtn.tag = button.tag;
+    [barItems addObject:doneBtn];
+    [pickerToolbar setItems:barItems animated:YES];
+    
+    _datePicker = [[UIDatePicker alloc] init];
+    _datePicker.datePickerMode = UIDatePickerModeDate;
+    _datePicker.backgroundColor = [UIColor colorWithRed:200.0/255.0 green:200.0/255.0 blue:200.0/255.0 alpha:1.0];
+    _datePicker.tag = button.tag;
+    
+    
+    
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *currentDate = [NSDate date];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    [comps setDay:1];
+    NSDate *eventStartDate = [calendar dateByAddingComponents:comps toDate:currentDate options:0];
+    
+    UIViewController* popoverContent = [[UIViewController alloc] init];
+    UIView* popoverView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 250, 344)];
+    popoverView.backgroundColor = [UIColor whiteColor];
+    
+    _datePicker.frame = CGRectMake(0, 44, 250, 300);
+    
+    [_datePicker addTarget:self action:@selector(dateChange:) forControlEvents:UIControlEventValueChanged];
+    [popoverView addSubview:pickerToolbar];
+    [popoverView addSubview:_datePicker];
+    popoverContent.view = popoverView;
+    //resize the popover view shown
+    //in the current view to the view's size
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+    popoverContent.preferredContentSize = CGSizeMake(250, 244);
+#else
+    popoverContent.contentSizeForViewInPopover = CGSizeMake(250, 244);
+#endif
+    
+    //create a popover controller
+    _pickerPopover = [[UIPopoverController alloc] initWithContentViewController:popoverContent];
+    [_pickerPopover presentPopoverFromRect:button.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
+    _pickerPopover.delegate=self;
+}
+-(IBAction)dateChange:(id)sender{
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterMediumStyle;
+    [df setDateFormat:@"dd/MM/yyyy"];
+    NSString* date = [df stringFromDate:_datePicker.date];
+    NSLog(@"%@",date);
+    _dateButton.titleLabel.text = date;
+
 }
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return _pickerValues.count;
+-(IBAction)pickerDone:(id)sender{
+
+    if (_pickerPopover != nil) {
+        [_pickerPopover dismissPopoverAnimated:YES];
+        _pickerPopover=nil;
+    }
 }
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+-(IBAction)showPicker:(id)sender{
+    if (lastselectedtag == [sender tag])
+    {
+        lastselectedtag = -1;
+        [aCEDropDown removeFromSuperview];
+        aCEDropDown = nil;
+    }
+    else{
+        clickedButton=(UIButton *)sender;
+        aCEDropDown=[[ACEDropDown alloc]init];
+        UIButton *btnClicked=(UIButton *)sender;
+        NSArray *categoryList = [[NSArray alloc] init];
+        categoryList=[lovValues objectAtIndex:[sender tag]];
+        NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+        [dict setObject:categoryList forKey:@"dataSource"];
+        [dict setObject:btnClicked forKey:@"button"];
+        aCEDropDown=[[ACEDropDown alloc]initWithDropDwon:dict ];
+        aCEDropDown.ddDelegate=self;
+        [self.view addSubview:aCEDropDown];
+        lastselectedtag = [sender tag];
+    }
+    
+}
+-(void)setLovs{
+    lovValues = [[NSMutableArray alloc] init];
+    [lovValues addObject:[[NSArray alloc]initWithObjects:@"New",@"In progress",@"Assigned",@"Resolved", nil]];
+    [lovValues addObject:[[NSArray alloc]initWithObjects:@"Critical",@"High",@"Medium",@"Low", nil]];
+    [lovValues addObject:[[NSArray alloc]initWithObjects:@"EFCF",@"KIOSK",@"Service Request",@"iCall",@"iHub", nil]];
+}
+-(void) selectedSingleOption:(NSDictionary *)selectedDict
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PickerCell"];
-    
-    cell.textLabel.text = [_pickerValues objectAtIndex:indexPath.row];
-    
-    
-    return cell;
+    lastselectedtag = -1;
 }
 @end
