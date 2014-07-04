@@ -21,6 +21,22 @@
 		A57209E419656D3A00211066 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C619656D3900211066 /* UIKit.framework */; };
 		A57209EC19656D3A00211066 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57209EA19656D3A00211066 /* InfoPlist.strings */; };
 		A57209EE19656D3A00211066 /* BugTrackingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57209ED19656D3A00211066 /* BugTrackingTests.m */; };
+		F41C3EDB1966A782009F6D85 /* ACEDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C3EDA1966A782009F6D85 /* ACEDropDown.m */; };
+		F4D49D1E196586B10069A649 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D1D196586B10069A649 /* HomeViewController.m */; };
+		F4D49D21196587E60069A649 /* RemedyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D20196587E60069A649 /* RemedyCell.m */; };
+		F4D49D2419659FB30069A649 /* AzSegmentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D2319659FB30069A649 /* AzSegmentationController.m */; };
+		F4D49D2719665A8F0069A649 /* ESMImagePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D2619665A8F0069A649 /* ESMImagePickerViewController.m */; };
+		F4D49D2A19665E070069A649 /* RemedyDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D2919665E070069A649 /* RemedyDetailsViewController.m */; };
+		F4D49D2D196661A20069A649 /* ESMAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D2C196661A20069A649 /* ESMAlertView.m */; };
+		F4D49D30196664BB0069A649 /* img-del.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D2E196664BB0069A649 /* img-del.png */; };
+		F4D49D31196664BB0069A649 /* img-del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D2F196664BB0069A649 /* img-del@2x.png */; };
+		F4D49D34196665050069A649 /* img-del.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D32196665050069A649 /* img-del.png */; };
+		F4D49D35196665050069A649 /* img-del@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D33196665050069A649 /* img-del@2x.png */; };
+		F4D49D3A1966662D0069A649 /* Add_material_Active.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D361966662D0069A649 /* Add_material_Active.png */; };
+		F4D49D3B1966662D0069A649 /* Add_material_Active@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D371966662D0069A649 /* Add_material_Active@2x.png */; };
+		F4D49D3C1966662D0069A649 /* Add_material.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D381966662D0069A649 /* Add_material.png */; };
+		F4D49D3D1966662D0069A649 /* Add_material@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F4D49D391966662D0069A649 /* Add_material@2x.png */; };
+		F4D49D46196689870069A649 /* PickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D45196689870069A649 /* PickerViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +69,30 @@
 		A57209E919656D3A00211066 /* BugTrackingTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BugTrackingTests-Info.plist"; sourceTree = "<group>"; };
 		A57209EB19656D3A00211066 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		A57209ED19656D3A00211066 /* BugTrackingTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BugTrackingTests.m; sourceTree = "<group>"; };
+		F41C3ED91966A776009F6D85 /* ACEDropDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEDropDown.h; sourceTree = "<group>"; };
+		F41C3EDA1966A782009F6D85 /* ACEDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDropDown.m; sourceTree = "<group>"; };
+		F4D49D1C196586B00069A649 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ../HomeViewController.h; sourceTree = "<group>"; };
+		F4D49D1D196586B10069A649 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ../HomeViewController.m; sourceTree = "<group>"; };
+		F4D49D1F196587E60069A649 /* RemedyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemedyCell.h; sourceTree = "<group>"; };
+		F4D49D20196587E60069A649 /* RemedyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemedyCell.m; sourceTree = "<group>"; };
+		F4D49D2219659FB30069A649 /* AzSegmentationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AzSegmentationController.h; sourceTree = "<group>"; };
+		F4D49D2319659FB30069A649 /* AzSegmentationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AzSegmentationController.m; sourceTree = "<group>"; };
+		F4D49D2519665A8F0069A649 /* ESMImagePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMImagePickerViewController.h; sourceTree = "<group>"; };
+		F4D49D2619665A8F0069A649 /* ESMImagePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMImagePickerViewController.m; sourceTree = "<group>"; };
+		F4D49D2819665E070069A649 /* RemedyDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemedyDetailsViewController.h; sourceTree = "<group>"; };
+		F4D49D2919665E070069A649 /* RemedyDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RemedyDetailsViewController.m; sourceTree = "<group>"; };
+		F4D49D2B196661A20069A649 /* ESMAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ESMAlertView.h; sourceTree = "<group>"; };
+		F4D49D2C196661A20069A649 /* ESMAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ESMAlertView.m; sourceTree = "<group>"; };
+		F4D49D2E196664BB0069A649 /* img-del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-del.png"; sourceTree = "<group>"; };
+		F4D49D2F196664BB0069A649 /* img-del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-del@2x.png"; sourceTree = "<group>"; };
+		F4D49D32196665050069A649 /* img-del.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-del.png"; sourceTree = "<group>"; };
+		F4D49D33196665050069A649 /* img-del@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "img-del@2x.png"; sourceTree = "<group>"; };
+		F4D49D361966662D0069A649 /* Add_material_Active.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add_material_Active.png; sourceTree = "<group>"; };
+		F4D49D371966662D0069A649 /* Add_material_Active@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add_material_Active@2x.png"; sourceTree = "<group>"; };
+		F4D49D381966662D0069A649 /* Add_material.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Add_material.png; sourceTree = "<group>"; };
+		F4D49D391966662D0069A649 /* Add_material@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Add_material@2x.png"; sourceTree = "<group>"; };
+		F4D49D44196689870069A649 /* PickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PickerViewController.h; sourceTree = "<group>"; };
+		F4D49D45196689870069A649 /* PickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PickerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +152,18 @@
 		A57209C819656D3900211066 /* BugTracking */ = {
 			isa = PBXGroup;
 			children = (
+				F41C3EDA1966A782009F6D85 /* ACEDropDown.m */,
+				F4D49D2E196664BB0069A649 /* img-del.png */,
+				F41C3ED91966A776009F6D85 /* ACEDropDown.h */,
+				F4D49D2F196664BB0069A649 /* img-del@2x.png */,
+				F4D49D2519665A8F0069A649 /* ESMImagePickerViewController.h */,
+				F4D49D2B196661A20069A649 /* ESMAlertView.h */,
+				F4D49D2C196661A20069A649 /* ESMAlertView.m */,
+				F4D49D2619665A8F0069A649 /* ESMImagePickerViewController.m */,
+				F4D49D2219659FB30069A649 /* AzSegmentationController.h */,
+				F4D49D2319659FB30069A649 /* AzSegmentationController.m */,
+				F4D49D1C196586B00069A649 /* HomeViewController.h */,
+				F4D49D1D196586B10069A649 /* HomeViewController.m */,
 				A57209D119656D3A00211066 /* ACEAppDelegate.h */,
 				A57209D219656D3A00211066 /* ACEAppDelegate.m */,
 				A57209D419656D3A00211066 /* Main.storyboard */,
@@ -119,6 +171,12 @@
 				A57209D819656D3A00211066 /* ACEViewController.m */,
 				A57209DA19656D3A00211066 /* Images.xcassets */,
 				A57209C919656D3900211066 /* Supporting Files */,
+				F4D49D1F196587E60069A649 /* RemedyCell.h */,
+				F4D49D20196587E60069A649 /* RemedyCell.m */,
+				F4D49D2819665E070069A649 /* RemedyDetailsViewController.h */,
+				F4D49D2919665E070069A649 /* RemedyDetailsViewController.m */,
+				F4D49D44196689870069A649 /* PickerViewController.h */,
+				F4D49D45196689870069A649 /* PickerViewController.m */,
 			);
 			path = BugTracking;
 			sourceTree = "<group>";
@@ -146,6 +204,12 @@
 		A57209E819656D3A00211066 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				F4D49D361966662D0069A649 /* Add_material_Active.png */,
+				F4D49D371966662D0069A649 /* Add_material_Active@2x.png */,
+				F4D49D381966662D0069A649 /* Add_material.png */,
+				F4D49D391966662D0069A649 /* Add_material@2x.png */,
+				F4D49D32196665050069A649 /* img-del.png */,
+				F4D49D33196665050069A649 /* img-del@2x.png */,
 				A57209E919656D3A00211066 /* BugTrackingTests-Info.plist */,
 				A57209EA19656D3A00211066 /* InfoPlist.strings */,
 			);
@@ -230,8 +294,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				A57209DB19656D3A00211066 /* Images.xcassets in Resources */,
+				F4D49D30196664BB0069A649 /* img-del.png in Resources */,
 				A57209CD19656D3A00211066 /* InfoPlist.strings in Resources */,
 				A57209D619656D3A00211066 /* Main.storyboard in Resources */,
+				F4D49D31196664BB0069A649 /* img-del@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -239,7 +305,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D49D3A1966662D0069A649 /* Add_material_Active.png in Resources */,
+				F4D49D3D1966662D0069A649 /* Add_material@2x.png in Resources */,
 				A57209EC19656D3A00211066 /* InfoPlist.strings in Resources */,
+				F4D49D35196665050069A649 /* img-del@2x.png in Resources */,
+				F4D49D3B1966662D0069A649 /* Add_material_Active@2x.png in Resources */,
+				F4D49D3C1966662D0069A649 /* Add_material.png in Resources */,
+				F4D49D34196665050069A649 /* img-del.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -250,9 +322,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F4D49D2419659FB30069A649 /* AzSegmentationController.m in Sources */,
+				F4D49D2D196661A20069A649 /* ESMAlertView.m in Sources */,
+				F4D49D46196689870069A649 /* PickerViewController.m in Sources */,
+				F4D49D21196587E60069A649 /* RemedyCell.m in Sources */,
 				A57209D919656D3A00211066 /* ACEViewController.m in Sources */,
+				F41C3EDB1966A782009F6D85 /* ACEDropDown.m in Sources */,
+				F4D49D2A19665E070069A649 /* RemedyDetailsViewController.m in Sources */,
 				A57209D319656D3A00211066 /* ACEAppDelegate.m in Sources */,
 				A57209CF19656D3A00211066 /* main.m in Sources */,
+				F4D49D1E196586B10069A649 /* HomeViewController.m in Sources */,
+				F4D49D2719665A8F0069A649 /* ESMImagePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -463,6 +543,7 @@
 				A57209F319656D3A00211066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		A57209F419656D3A00211066 /* Build configuration list for PBXNativeTarget "BugTrackingTests" */ = {
 			isa = XCConfigurationList;
@@ -471,6 +552,7 @@
 				A57209F619656D3A00211066 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
