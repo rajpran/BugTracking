@@ -8,7 +8,8 @@
 
 #import "ACEViewController.h"
 
-@interface ACEViewController ()
+
+@interface ACEViewController ()<NSXMLParserDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -140,6 +141,61 @@
     NSString *theXML = [[NSString alloc] initWithBytes:
                         [self.webData mutableBytes] length:[self.webData length] encoding:NSUTF8StringEncoding];
     NSLog(@"XML Reseponse:%@",theXML);
+    
+    NSXMLParser *xmlParser = [[NSXMLParser alloc] initWithData:self.webData];
+    
+    // Don't forget to set the delegate!
+    xmlParser.delegate = self;
+    
+    // Run the parser
+    BOOL parsingResult = [xmlParser parse];
+}
+
+#pragma mark - XML parser delegate methods
+
+-(void) parser:(NSXMLParser *)parser didStartElement:(NSString *)elementName
+  namespaceURI:(NSString *)namespaceURI qualifiedName:
+(NSString *)qName attributes:(NSDictionary *)attributeDict
+{
+    NSString  *currentDescription = [NSString alloc];
+    element=elementName;
+    att=[attributeDict objectForKey:@"SystemCode"];
+}
+- (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
+{
+    if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"EMAIL"])
+    {
+        email = string;
+         NSLog(@"email %@",email);
+        [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"Email"];
+    }
+    
+    if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"NT USERNAME"])
+    {
+        userName = string;
+        NSLog(@"User Name %@",userName);
+        [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"UserName"];
+    }
+    
+    if ([element isEqualToString:@"FirstName"]) {
+        firstName = string;
+        NSLog(@"First name is:%@",firstName);
+        [[NSUserDefaults standardUserDefaults] setObject:firstName forKey:@"FirstName"];
+    }
+    
+    if ([element isEqualToString:@"LastName"]) {
+        lastName = string;
+        NSLog(@"Last name is:%@",lastName);
+        [[NSUserDefaults standardUserDefaults] setObject:firstName forKey:@"LastName"];
+    }
+    
+}
+- (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
+  namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
+{
+    //if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"EMAIL"])
+        //NSLog(@"email %@",email);
+
 }
 
 @end

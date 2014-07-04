@@ -9,5 +9,12 @@
 #import <UIKit/UIKit.h>
 
 @interface ACEViewController : UIViewController
-
+{
+    NSString *element;
+    NSString *att;
+    NSString *userName;
+    NSString *email;
+    NSString *firstName;
+    NSString *lastName;
+}
 @end
