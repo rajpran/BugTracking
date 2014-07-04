@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A53AE2A819668E2B00991FAD /* AZUserInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AE2A719668E2B00991FAD /* AZUserInfo.m */; };
+		A53AE2AB19668F3A00991FAD /* AZGlobalHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A53AE2AA19668F3A00991FAD /* AZGlobalHelper.m */; };
 		A57209C319656D3900211066 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C219656D3900211066 /* Foundation.framework */; };
 		A57209C519656D3900211066 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C419656D3900211066 /* CoreGraphics.framework */; };
 		A57209C719656D3900211066 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C619656D3900211066 /* UIKit.framework */; };
@@ -50,6 +52,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A53AE2A619668E2B00991FAD /* AZUserInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZUserInfo.h; sourceTree = "<group>"; };
+		A53AE2A719668E2B00991FAD /* AZUserInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZUserInfo.m; sourceTree = "<group>"; };
+		A53AE2A919668F3A00991FAD /* AZGlobalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZGlobalHelper.h; sourceTree = "<group>"; };
+		A53AE2AA19668F3A00991FAD /* AZGlobalHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZGlobalHelper.m; sourceTree = "<group>"; };
 		A57209BF19656D3900211066 /* BugTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BugTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57209C219656D3900211066 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A57209C419656D3900211066 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -119,6 +125,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A53AE2A519668DE200991FAD /* ModelClass */ = {
+			isa = PBXGroup;
+			children = (
+				A53AE2A619668E2B00991FAD /* AZUserInfo.h */,
+				A53AE2A719668E2B00991FAD /* AZUserInfo.m */,
+				A53AE2A919668F3A00991FAD /* AZGlobalHelper.h */,
+				A53AE2AA19668F3A00991FAD /* AZGlobalHelper.m */,
+			);
+			name = ModelClass;
+			sourceTree = "<group>";
+		};
 		A57209B619656D3900211066 = {
 			isa = PBXGroup;
 			children = (
