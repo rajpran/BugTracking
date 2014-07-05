@@ -15,12 +15,17 @@
     ACEDropDown * aCEDropDown;
     NSMutableArray *lovValues;
 }
+- (IBAction)searchAction:(id)sender;
 @property (weak, nonatomic) IBOutlet UITableView *pickerTableView;
 - (IBAction)showDatePicker:(id)sender;
+- (IBAction)resetSearchData:(id)sender;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 @property (weak, nonatomic) IBOutlet UIButton *statusBtn;
 @property (weak, nonatomic) IBOutlet UIButton *priorityBtn;
+@property (weak, nonatomic) IBOutlet UIButton *productBtn;
 @property (weak, nonatomic) IBOutlet UIButton *dateButton;
+@property (weak, nonatomic) IBOutlet UITextField *requestIdTxt;
+
 @property (strong, nonatomic) UIPopoverController *pickerPopover;
 @end
 
@@ -40,6 +45,14 @@
     [super viewDidLoad];
     lastselectedtag = -1;
     [self setLovs];
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterMediumStyle;
+    [df setDateFormat:@"dd/MM/yyyy"];
+    NSString* date = [df stringFromDate:[NSDate date]];
+    NSLog(@"%@",date);
+    _dateButton.titleLabel.text = date;
 	// Do any additional setup after loading the view.
     
 }
@@ -106,6 +119,9 @@
     [_pickerPopover presentPopoverFromRect:button.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
     _pickerPopover.delegate=self;
 }
+
+- (IBAction)resetSearchData:(id)sender {
+}
 -(IBAction)dateChange:(id)sender{
     
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
@@ -158,4 +174,18 @@
 {
     lastselectedtag = -1;
 }
+- (IBAction)searchAction:(id)sender {
+    NSMutableDictionary *searchDict = [[NSMutableDictionary alloc] init];
+    [searchDict setValue:_statusBtn.titleLabel.text forKey:@"Status"];
+    [searchDict setValue:_priorityBtn.titleLabel.text forKey:@"Priority"];
+    [searchDict setValue:_productBtn.titleLabel.text forKey:@"Product"];
+    [searchDict setValue:_requestIdTxt.text forKey:@"RequestId"];
+    [searchDict setValue:_statusBtn.titleLabel.text forKey:@"CreatedOn"];
+
+    
+    
+    [_delegate searchRemedy:searchDict];
+}
+
+
 @end
