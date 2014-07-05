@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITableView *remedyTableView;
 @property (weak, nonatomic) IBOutlet UILabel *RemedyId;
 @property (weak, nonatomic) IBOutlet UIView *titleView;
+@property (weak, nonatomic) IBOutlet UILabel *userNameLabel;
 @property (weak, nonatomic) PickerViewController *popoverContent;
 - (IBAction)showSearchPicker:(id)sender;
 @property (strong, nonatomic) UIDatePicker *datePicker;
@@ -23,6 +24,7 @@
 @property (strong, nonatomic) NSDictionary *remediesDict;
 @property (strong, nonatomic) NSArray *remedyKeysArray;
 @property (weak, nonatomic) NSString *incidentId;
+@property (weak, nonatomic) IBOutlet UIButton *addNewBtn;
 
 
 @end
@@ -41,6 +43,12 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserType"] isEqualToString:@"FieldUser"]){
+        _addNewBtn.hidden =  NO;
+    }else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserType"] isEqualToString:@"TechicalUser"]){
+        _addNewBtn.hidden =  YES;
+    }
+    _userNameLabel.text = [[NSUserDefaults standardUserDefaults] objectForKey:@"FirstName"];
 	// Do any additional setup after loading the view.
 }
 -(void)setremedyData{
@@ -85,6 +93,14 @@
 
     
     return cell;
+}
+- (void)tableView: (UITableView*)tableView willDisplayCell: (UITableViewCell*)cell forRowAtIndexPath: (NSIndexPath*)indexPath
+{
+    
+    if(indexPath.row % 2 == 0)
+        cell.backgroundColor = [UIColor whiteColor];
+    else
+        cell.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:239.0/255.0 blue:246.0/255.0 alpha:0.2];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -96,6 +96,18 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     self.resolutionTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
     
     self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"img_centerbg.png"]];
+    [_leftView.layer setCornerRadius:10.0f];
+    [_rightView.layer setCornerRadius:10.0f];
+    [_summaryTextView.layer setCornerRadius:05.0f];
+    [_descriptionTextView.layer setCornerRadius:05.0f];
+    [_statusReasonTextView.layer setCornerRadius:05.0f];
+    [_resolutionTextView.layer setCornerRadius:05.0f];
+    [_stepsTextView.layer setCornerRadius:05.0f];
+
+
+
+
+
     
 }
 

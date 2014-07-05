@@ -26,7 +26,16 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,10, 0)];
+    [_userNameTextField setLeftViewMode:UITextFieldViewModeAlways];
+    [_userNameTextField setLeftView:spacerView];
+    
+    UIView *spacerView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0,10, 0)];
+
+    [_passwordTextField setLeftViewMode:UITextFieldViewModeAlways];
+    [_passwordTextField setLeftView:spacerView1];
+	
+    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)didReceiveMemoryWarning
