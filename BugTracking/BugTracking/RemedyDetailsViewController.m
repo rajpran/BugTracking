@@ -94,6 +94,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     self.statusReasonTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
     self.resolutionTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
     
+    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"img_centerbg.png"]];
+    
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -493,6 +495,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
 -(void) textViewDidBeginEditing:(UITextView *)textView {
     
     CGRect textFieldRect = [self.view.window convertRect:textView.bounds fromView:textView];
+    
     CGRect viewRect = [self.view.window convertRect:self.view.bounds fromView:self.view];
     
     CGFloat midline = textFieldRect.origin.y + 0.5 * textFieldRect.size.height;
@@ -516,6 +519,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
         animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
         
     }
+    
+    //TextViews added in right side are not moving up on keyboard presentation
+    if (textView.tag == 11) {
+        animatedDistance = 100;
+    }
+    
+    if (textView.tag == 12) {
+        animatedDistance = 200;
+    }
+    
     CGRect viewFrame = self.view.frame;
     viewFrame.origin.y -= animatedDistance;
     

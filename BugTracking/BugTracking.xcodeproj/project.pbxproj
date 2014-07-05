@@ -10,6 +10,7 @@
 		A5378CDB19682D3B00819AAD /* blue_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDD1967FC800076A2E6 /* blue_bg.png */; };
 		A5378CDC19682D4300819AAD /* btn_login.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDE1967FC800076A2E6 /* btn_login.png */; };
 		A5378CDD19682D7B00819AAD /* img_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CE01967FC800076A2E6 /* img_textfield.png */; };
+		A5378CDE19683F0700819AAD /* img_centerbg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDF1967FC800076A2E6 /* img_centerbg.png */; };
 		A57209C319656D3900211066 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C219656D3900211066 /* Foundation.framework */; };
 		A57209C519656D3900211066 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C419656D3900211066 /* CoreGraphics.framework */; };
 		A57209C719656D3900211066 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C619656D3900211066 /* UIKit.framework */; };
@@ -396,6 +397,7 @@
 				F46EE24C196735BB007D5D7E /* icon_tab_sync_selected@2x.png in Resources */,
 				F46EE250196735BB007D5D7E /* submit_bt.png in Resources */,
 				F4D49D30196664BB0069A649 /* img-del.png in Resources */,
+				A5378CDE19683F0700819AAD /* img_centerbg.png in Resources */,
 				F46EE24E196735BB007D5D7E /* save_bt.png in Resources */,
 				F46EE2581967F2B8007D5D7E /* Main.storyboard in Resources */,
 				A57209CD19656D3A00211066 /* InfoPlist.strings in Resources */,
