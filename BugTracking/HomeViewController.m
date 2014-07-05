@@ -9,8 +9,10 @@
 #import "HomeViewController.h"
 #import "RemedyCell.h"
 #import "PickerViewController.h"
+#import "AZUtils.h"
 
 @interface HomeViewController ()<UIPopoverControllerDelegate,SearchDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *remedyTableView;
 @property (weak, nonatomic) IBOutlet UILabel *RemedyId;
 @property (weak, nonatomic) IBOutlet UIView *titleView;
 @property (weak, nonatomic) PickerViewController *popoverContent;
@@ -42,6 +44,14 @@
 -(void)setremedyData{
     _remediesDict = [[NSDictionary alloc]init];
     _remedyKeysArray = [[NSArray alloc]init];
+    
+    _remediesDict = [AZUtils getCompletePlistData];
+    
+    _remedyKeysArray = [_remediesDict allKeys];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    [self setremedyData];
+    [_remedyTableView reloadData];
 }
 - (void)didReceiveMemoryWarning
 {
@@ -59,7 +69,19 @@
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    RemedyCell *cell = (RemedyCell *)[tableView dequeueReusableCellWithIdentifier:@"RemedyCell"];    
+    RemedyCell *cell = (RemedyCell *)[tableView dequeueReusableCellWithIdentifier:@"RemedyCell"];
+    NSDictionary *remedyDict = [_remediesDict objectForKey:[_remedyKeysArray objectAtIndex:indexPath.row]];
+    
+    
+    cell.summaryLabel.text = [remedyDict valueForKey:@"Summary"];
+    cell.remedyIDLabel.text = [remedyDict valueForKey:@"IncidentID"];
+    cell.statusLabel.text = [remedyDict valueForKey:@"Status"];
+    cell.createdDateLabel.text = [remedyDict valueForKey:@"CreatedDate"];
+    cell.productLabel.text = [remedyDict valueForKey:@"Product"];
+    cell.priorityLabel.text = [remedyDict valueForKey:@"Priority"];
+    cell.incidentTypeLabel.text = [remedyDict valueForKey:@"IncidentType"];
+
+    
     return cell;
 }
 

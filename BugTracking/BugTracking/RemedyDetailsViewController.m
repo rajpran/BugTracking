@@ -32,6 +32,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *statusButton;
 @property (weak, nonatomic) IBOutlet UILabel *incidentIdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userIdLabel;
+- (IBAction)submitRemedy:(id)sender;
 
 
 @property (weak, nonatomic) IBOutlet UITextField *contactTextField;
@@ -345,6 +346,16 @@
     if ([_resolutionTextView.text length] >0) {
         resolutionValue = _resolutionTextView.text;
     }
+    NSString *incidentType = @"";
+    if ([_resolutionTextView.text length] >0) {
+        incidentType = _incidentType.titleLabel.text;
+    }
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterMediumStyle;
+    [df setDateFormat:@"dd/MM/yyyy"];
+    NSString* date = [df stringFromDate:[NSDate date]];
     
     //Key name is the incident id
     NSString *key = _incidentIdLabel.text;
@@ -358,9 +369,15 @@
                            @"Priority":priorityValue,
                            @"Status":statusValue,
                            @"StatusReason":statusReasonValue,
-                           @"Resolution":resolutionValue};
-    
+                           @"Resolution":resolutionValue,
+                            @"IncidentType":incidentType,
+                           @"CreatedDate":date};
     [AZUtils setPlistData:@"Data" key:key value:data];
+    [[self navigationController] popToRootViewControllerAnimated:YES];
+
 }
 
+- (IBAction)submitRemedy:(id)sender {
+    [self saveDataInPlist];
+}
 @end
