@@ -41,6 +41,24 @@
     BOOL correctInput = [self validateUserInput:[[self userNameTextField] text] password:[[self passwordTextField] text]];
     
     if (correctInput) {
+        [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"UserName"];
+        
+        if ([_userNameTextField.text isEqualToString:@"kdsd708"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:@"Robert" forKey:@"FirstName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"Trempe" forKey:@"LastName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"+1 302 886 1021" forKey:@"Contact"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"FieldUser" forKey:@"UserType"];
+
+        }else if([_userNameTextField.text isEqualToString:@"knxz537"]){
+            [[NSUserDefaults standardUserDefaults] setObject:@"Kamal" forKey:@"FirstName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"kannan" forKey:@"LastName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"+91 9884565895" forKey:@"Contact"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"Techical" forKey:@"UserType"];
+        }
+        
+
+
+
         NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://na.az.com/soaplatform\" xmlns:urn=\"urn:astrazeneca:na:Employee:services:EmployeeDataInitiatior:2\">\n"
                                "<soapenv:Header>\n"
                                "<urn:HeaderParams>\n"
@@ -186,7 +204,7 @@
     if ([element isEqualToString:@"LastName"]) {
         lastName = string;
         NSLog(@"Last name is:%@",lastName);
-        [[NSUserDefaults standardUserDefaults] setObject:firstName forKey:@"LastName"];
+        [[NSUserDefaults standardUserDefaults] setObject:lastName forKey:@"LastName"];
     }
     
 }

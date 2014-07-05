@@ -147,6 +147,21 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     [_productType setTitle:[remedyDetails valueForKey:@"ProductType"] forState:UIControlStateNormal];
     [_productButton setTitle:[remedyDetails valueForKey:@"Product"] forState:UIControlStateNormal];
     [_priorityButton setTitle:[remedyDetails valueForKey:@"Priority"] forState:UIControlStateNormal];
+    [_eventMaterialArray removeAllObjects];
+    if ([remedyDetails objectForKey:@"image"]) {
+        for (NSString *base64String in [remedyDetails objectForKey:@"image"]) {
+            NSData *imgData = [Base64 decode:base64String];
+            UIImage *materialImage = [UIImage imageWithData:imgData];
+            NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
+            [imageDic setObject:materialImage forKey:@"image"];
+            [imageDic setObject:@"" forKey:@"Id"];
+            [_eventMaterialArray addObject:imageDic];
+        }
+    }
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self reloadEventMaterial];
+    });
 
 }
 - (void)didReceiveMemoryWarning
@@ -250,7 +265,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     //[imageDic setObject:AzLocalizedString(@"AEmeetingDetailViewController1stPageButton", nil) forKey:@"type"];
     //[self deleteMaterialOnSaveSucess:selectedMaterialType];
     [_eventMaterialArray addObject:imageDic];
-    [self reloadEventMaterial];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self reloadEventMaterial];
+    });
 }
 - (void)reloadEventMaterial
 {
@@ -316,8 +333,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
             //NSMutableArray *deleteArray = [[NSMutableArray alloc] initWithArray:_eventMaterialArray];
             //[[EventManager sharedInstance] setObject:deleteArray forKey:kDeleteMateriaDetails];
         }
-        
-        [_eventMaterialArray removeAllObjects];
+        UIButton *btn = (UIButton*)sender;
+        [_eventMaterialArray removeObjectAtIndex:btn.tag];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         [self reloadEventMaterial];
@@ -532,4 +549,12 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     }
     return YES;
 }
+-(void)disableAllFields{
+    _leftView.userInteractionEnabled = NO;
+    
+}
+-(void)enableAllFields{
+    _leftView.userInteractionEnabled = NO;
+}
+
 @end
