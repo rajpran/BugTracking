@@ -347,7 +347,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" minimumFontSize="17" id="bZ2-d8-RrO">
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="17" background="img_textfield.png" id="bZ2-d8-RrO">
                                         <rect key="frame" x="135" y="125" width="222" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -380,7 +380,7 @@
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" id="wkD-sa-9Sk">
                                         <rect key="frame" x="135" y="362" width="315" height="103"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                         <connections>
@@ -733,7 +733,7 @@
     <resources>
         <image name="blue_bg.png" width="335" height="271"/>
         <image name="btn_login.png" width="164" height="50"/>
-        <image name="choose_city.png" width="238" height="44"/>
+        <image name="choose_city.png" width="395" height="59"/>
         <image name="icon_tab_create_selected.png" width="30" height="30"/>
         <image name="img_centerbg.png" width="1024" height="568"/>
         <image name="img_textfield.png" width="288" height="48"/>
