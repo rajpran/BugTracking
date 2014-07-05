@@ -99,18 +99,18 @@
 
 
 /*Validate user input*/
-- (BOOL)validateUserInput:(NSString *)email password:(NSString *)password
+- (BOOL)validateUserInput:(NSString *)iEmail password:(NSString *)iPassword
 {
     BOOL validInput = YES;
     
     //Check if both fields are empty
-    if ([email length] == 0 && [password length] == 0)
+    if ([iEmail length] == 0 && [iPassword length] == 0)
     {
         self.errorMessage = @"Please enter Email and Password";
         return validInput = NO;
-    }else if ([email length] == 0 || [password length] == 0){
+    }else if ([iEmail length] == 0 || [iPassword length] == 0){
         //Check any one field is empty
-        if ([email length] == 0) {
+        if ([iEmail length] == 0) {
             self.errorMessage = @"Please enter Email Address";
             return validInput = NO;
         }else{
