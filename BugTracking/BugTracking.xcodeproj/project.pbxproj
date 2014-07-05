@@ -185,6 +185,7 @@
 		A57209C819656D3900211066 /* BugTracking */ = {
 			isa = PBXGroup;
 			children = (
+                A5D70CD01967CA1B0076A2E6 /* Common */,
 				F4D49D44196689870069A649 /* PickerViewController.h */,
 				F4D49D45196689870069A649 /* PickerViewController.m */,
 				A53AE2A519668DE200991FAD /* ModelClass */,
@@ -351,6 +352,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5D70CD51967CBF30076A2E6 /* Data.plist in Resources */,
 				F46EE251196735BB007D5D7E /* submit_bt@2x.png in Resources */,
 				A57209DB19656D3A00211066 /* Images.xcassets in Resources */,
 				F46EE24D196735BB007D5D7E /* login_btn.png in Resources */,

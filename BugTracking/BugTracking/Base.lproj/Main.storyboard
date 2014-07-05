@@ -360,7 +360,7 @@
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qfv-Fo-r0H">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Incident Type:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="qfv-Fo-r0H">
                                         <rect key="frame" x="20" y="305" width="107" height="21"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -538,14 +538,14 @@
                         <outlet property="contactTextField" destination="bZ2-d8-RrO" id="BuZ-1x-X1d"/>
                         <outlet property="descriptionTextView" destination="cPw-GS-Uk6" id="J1P-Cs-sFd"/>
                         <outlet property="incidentIdLabel" destination="A0H-lV-xwe" id="lqL-tw-xiD"/>
-                        <outlet property="incidentType" destination="ZFF-Ie-nzn" id="8jR-Ua-N4N"/>
+                        <outlet property="incidentType" destination="ZFF-Ie-nzn" id="M7Y-0l-ne8"/>
                         <outlet property="leftView" destination="5P2-l8-8dW" id="4Rb-kR-ZCY"/>
                         <outlet property="materialCloseButton" destination="9sB-n7-RnX" id="tNj-D5-P12"/>
                         <outlet property="materialImageView" destination="ntk-KR-lC0" id="iCc-0h-vMb"/>
                         <outlet property="materialsScrollView" destination="KpS-Fe-Rw1" id="n95-Hp-lPT"/>
                         <outlet property="priorityButton" destination="NTz-zY-yhM" id="BCj-vb-u41"/>
                         <outlet property="productButton" destination="iq3-8f-jqe" id="TgT-JF-yrT"/>
-                        <outlet property="productType" destination="XnY-sO-fZo" id="UlW-kS-tQl"/>
+                        <outlet property="productType" destination="XnY-sO-fZo" id="ong-82-8Cb"/>
                         <outlet property="resolutionTextView" destination="eAG-nL-ZTn" id="2hL-O7-HxE"/>
                         <outlet property="rightView" destination="JFe-sz-fo2" id="lyq-R1-xlh"/>
                         <outlet property="statusButton" destination="cyC-Hv-oAI" id="mux-eT-ptx"/>

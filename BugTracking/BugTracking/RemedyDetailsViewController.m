@@ -33,12 +33,17 @@
 @property (weak, nonatomic) IBOutlet UILabel *incidentIdLabel;
 @property (weak, nonatomic) IBOutlet UILabel *userIdLabel;
 
+
 @property (weak, nonatomic) IBOutlet UITextField *contactTextField;
 @property (weak, nonatomic) IBOutlet UITextView *summaryTextView;
 @property (weak, nonatomic) IBOutlet UITextView *descriptionTextView;
 @property (weak, nonatomic) IBOutlet UITextView *stepsTextView;
 @property (weak, nonatomic) IBOutlet UITextView *statusReasonTextView;
 @property (weak, nonatomic) IBOutlet UITextView *resolutionTextView;
+
+
+
+
 
 @end
 
@@ -287,13 +292,13 @@
     //Capture all the data entered in screen and save it in plist file
     
     NSString *incidentValue = @"";
-    if ([self.incidentLabel.text length] > 0) {
-        incidentValue = self.incidentLabel.text;
+    if ([_incidentIdLabel.text length] > 0) {
+        incidentValue = _incidentIdLabel.text;
     }
     
     NSString *userIDValue = @"";
-    if ([self.userIDLabel.text length] > 0) {
-        userIDValue = self.userIDLabel.text;
+    if ([_userIdLabel.text length] > 0) {
+        userIDValue = _userIdLabel.text;
     }
     
     NSString *contactValue = @"";
@@ -302,47 +307,47 @@
     }
     
     NSString *productTypeValue = @"";
-    if ([self.productTypeLabel.text length] > 0) {
-        productTypeValue = self.productTypeLabel.text;
+    if ([_productType.titleLabel.text length] > 0) {
+        productTypeValue = _productType.titleLabel.text;
     }
     
     NSString *productValue = @"";
-    if ([self.productLabel.text length] > 0) {
-        productValue = self.productLabel.text;
+    if ([_productButton.titleLabel.text length] > 0) {
+        productValue = _productButton.titleLabel.text;
     }
     
     NSString *summaryValue = @"";
-    if ([self.summaryLabel.text length] > 0) {
-        summaryValue = self.summaryLabel.text;
+    if ([_summaryTextView.text length] > 0) {
+        summaryValue = _summaryTextView.text;
     }
     
     NSString *stepsToReproduceValue = @"";
-    if ([self.stepsToReproduceLabel.text length] > 0) {
-        stepsToReproduceValue = self.stepsToReproduceLabel.text;
+    if ([_summaryTextView.text length] > 0) {
+        stepsToReproduceValue = _summaryTextView.text;
     }
     
     NSString *priorityValue = @"";
-    if ([self.priorityLabel.text length] > 0) {
-        priorityValue = self.priorityLabel.text;
+    if ([_priorityButton.titleLabel.text length] > 0) {
+        priorityValue = _priorityButton.titleLabel.text;
     }
     
     NSString *statusValue = @"";
-    if ([self.statusLabel.text length] > 0) {
-        statusValue = self.statusLabel.text;
+    if ([_statusButton.titleLabel.text length] > 0) {
+        statusValue = _statusButton.titleLabel.text;
     }
     
     NSString *statusReasonValue = @"";
-    if ([self.statusReasonLabel.text length] > 0) {
-        statusReasonValue = self.statusReasonLabel.text;
+    if ([_statusReasonTextView.text length] > 0) {
+        statusReasonValue = _statusReasonTextView.text;
     }
     
     NSString *resolutionValue = @"";
-    if ([self.resolutionLabel.text length] >0) {
-        resolutionValue = self.resolutionLabel.text;
+    if ([_resolutionTextView.text length] >0) {
+        resolutionValue = _resolutionTextView.text;
     }
     
     //Key name is the incident id
-    NSString *key = self.incidentLabel.text;
+    NSString *key = _incidentIdLabel.text;
     NSDictionary *data = @{@"IncidentID": incidentValue,
                            @"UserID":userIDValue,
                            @"Contact":contactValue,
