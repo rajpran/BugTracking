@@ -54,4 +54,13 @@
     return [data objectForKey:key];
 }
 
++(id)getCompletePlistData
+{
+    [self setPlist:@"Data"];
+    
+    NSString *path = [[self getDocsDirectory] stringByAppendingPathComponent:@"Data.plist"];
+    NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
+    return data;
+}
+
 @end

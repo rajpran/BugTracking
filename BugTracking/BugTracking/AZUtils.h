@@ -14,5 +14,5 @@
 +(BOOL)setPlist:(NSString *)strPlistName;
 +(void)setPlistData:(NSString *)strPlistName key:(NSString *)key value:(NSDictionary *)strValue;
 +(id)getPlistData:(NSString *)strPlistName key:(NSString *)key;
-
++ (id)getCompletePlistData;
 @end
