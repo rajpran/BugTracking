@@ -206,7 +206,13 @@
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <outlet property="remedyIDLabel" destination="bTB-qd-4rZ" id="Alr-5o-TZJ"/>
+                                            <outlet property="createdDateLabel" destination="iOr-ni-hJp" id="nrD-yu-i7v"/>
+                                            <outlet property="incidentTypeLabel" destination="zuB-7E-76y" id="y7n-yI-kHH"/>
+                                            <outlet property="priorityLabel" destination="dvd-7T-9e0" id="Gnh-hc-6Wq"/>
+                                            <outlet property="productLabel" destination="1Jz-sa-bqe" id="qA7-xk-xMv"/>
+                                            <outlet property="remedyIDLabel" destination="jJe-o8-tEq" id="ScC-KJ-eCQ"/>
+                                            <outlet property="statusLabel" destination="fE6-y2-dHM" id="y7J-v6-Nrr"/>
+                                            <outlet property="summaryLabel" destination="0v0-om-qtv" id="HEe-hV-VkQ"/>
                                             <segue destination="2Rw-jF-VXc" kind="push" id="TYA-1w-42b"/>
                                         </connections>
                                     </tableViewCell>
@@ -235,6 +241,9 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
+                                        <connections>
+                                            <segue destination="2Rw-jF-VXc" kind="push" id="pFX-Lc-YR9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qgN-rU-n1N">
                                         <rect key="frame" x="899" y="9" width="26" height="30"/>
@@ -729,4 +738,7 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
+    <inferredMetricsTieBreakers>
+        <segue reference="pFX-Lc-YR9"/>
+    </inferredMetricsTieBreakers>
 </document>

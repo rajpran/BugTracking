@@ -13,7 +13,6 @@
 		A57209CD19656D3A00211066 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A57209CB19656D3A00211066 /* InfoPlist.strings */; };
 		A57209CF19656D3A00211066 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A57209CE19656D3A00211066 /* main.m */; };
 		A57209D319656D3A00211066 /* ACEAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A57209D219656D3A00211066 /* ACEAppDelegate.m */; };
-		A57209D619656D3A00211066 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57209D419656D3A00211066 /* Main.storyboard */; };
 		A57209D919656D3A00211066 /* ACEViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A57209D819656D3A00211066 /* ACEViewController.m */; };
 		A57209DB19656D3A00211066 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A57209DA19656D3A00211066 /* Images.xcassets */; };
 		A57209E219656D3A00211066 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209E119656D3A00211066 /* XCTest.framework */; };
@@ -38,6 +37,7 @@
 		F46EE253196735BB007D5D7E /* sync_logo_orange@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F46EE248196735BB007D5D7E /* sync_logo_orange@2x.png */; };
 		F46EE2561967365D007D5D7E /* navbar_fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = F46EE2541967365D007D5D7E /* navbar_fullscreen.png */; };
 		F46EE2571967365D007D5D7E /* navbar_fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F46EE2551967365D007D5D7E /* navbar_fullscreen@2x.png */; };
+		F46EE2581967F2B8007D5D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57209D419656D3A00211066 /* Main.storyboard */; };
 		F4D49D1E196586B10069A649 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D1D196586B10069A649 /* HomeViewController.m */; };
 		F4D49D21196587E60069A649 /* RemedyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D20196587E60069A649 /* RemedyCell.m */; };
 		F4D49D2419659FB30069A649 /* AzSegmentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D2319659FB30069A649 /* AzSegmentationController.m */; };
@@ -185,10 +185,9 @@
 		A57209C819656D3900211066 /* BugTracking */ = {
 			isa = PBXGroup;
 			children = (
-                A5D70CD01967CA1B0076A2E6 /* Common */,
+				A5D70CD01967CA1B0076A2E6 /* Common */,
 				F4D49D44196689870069A649 /* PickerViewController.h */,
 				F4D49D45196689870069A649 /* PickerViewController.m */,
-				A53AE2A519668DE200991FAD /* ModelClass */,
 				F41C3EDA1966A782009F6D85 /* ACEDropDown.m */,
 				F4D49D2E196664BB0069A649 /* img-del.png */,
 				F41C3ED91966A776009F6D85 /* ACEDropDown.h */,
@@ -363,9 +362,9 @@
 				F46EE250196735BB007D5D7E /* submit_bt.png in Resources */,
 				F4D49D30196664BB0069A649 /* img-del.png in Resources */,
 				F46EE24E196735BB007D5D7E /* save_bt.png in Resources */,
+				F46EE2581967F2B8007D5D7E /* Main.storyboard in Resources */,
 				A57209CD19656D3A00211066 /* InfoPlist.strings in Resources */,
 				F46EE24B196735BB007D5D7E /* icon_tab_sync_selected.png in Resources */,
-				A57209D619656D3A00211066 /* Main.storyboard in Resources */,
 				F46EE24A196735BB007D5D7E /* icon_tab_create_selected@2x.png in Resources */,
 				F46EE24F196735BB007D5D7E /* save_bt@2x.png in Resources */,
 				F46EE2561967365D007D5D7E /* navbar_fullscreen.png in Resources */,
@@ -404,8 +403,6 @@
 				A57209D919656D3A00211066 /* ACEViewController.m in Sources */,
 				F41C3EDB1966A782009F6D85 /* ACEDropDown.m in Sources */,
 				F4D49D2A19665E070069A649 /* RemedyDetailsViewController.m in Sources */,
-				A53AE2A819668E2B00991FAD /* AZUserInfo.m in Sources */,
-				A53AE2AB19668F3A00991FAD /* AZGlobalHelper.m in Sources */,
 				A57209D319656D3A00211066 /* ACEAppDelegate.m in Sources */,
 				A57209CF19656D3A00211066 /* main.m in Sources */,
 				F4D49D1E196586B10069A649 /* HomeViewController.m in Sources */,

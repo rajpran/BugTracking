@@ -17,6 +17,9 @@
 - (IBAction)showSearchPicker:(id)sender;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 - (IBAction)logOut:(id)sender;
+@property (strong, nonatomic) NSDictionary *remediesDict;
+@property (strong, nonatomic) NSArray *remedyKeysArray;
+
 
 @end
 
@@ -36,7 +39,10 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
 }
-
+-(void)setremedyData{
+    _remediesDict = [[NSDictionary alloc]init];
+    _remedyKeysArray = [[NSArray alloc]init];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -49,7 +55,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 3;
+    return _remedyKeysArray.count;
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
