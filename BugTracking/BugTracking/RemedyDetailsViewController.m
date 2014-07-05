@@ -384,11 +384,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
             [dict setObject:btnClicked forKey:@"button"];
             aCEDropDown=[[ACEDropDown alloc]initWithDropDwon:dict ];
             aCEDropDown.ddDelegate=self;
-            if ([sender tag]>2) {
-                [_rightView addSubview:aCEDropDown];
-            }else{
-                [_leftView addSubview:aCEDropDown];
-            }
+            [_leftView addSubview:aCEDropDown];
+
             lastselectedtag = [sender tag];
         }
     }
