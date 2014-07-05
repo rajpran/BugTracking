@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5378CDB19682D3B00819AAD /* blue_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDD1967FC800076A2E6 /* blue_bg.png */; };
+		A5378CDC19682D4300819AAD /* btn_login.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDE1967FC800076A2E6 /* btn_login.png */; };
+		A5378CDD19682D7B00819AAD /* img_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CE01967FC800076A2E6 /* img_textfield.png */; };
 		A57209C319656D3900211066 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C219656D3900211066 /* Foundation.framework */; };
 		A57209C519656D3900211066 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C419656D3900211066 /* CoreGraphics.framework */; };
 		A57209C719656D3900211066 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C619656D3900211066 /* UIKit.framework */; };
@@ -380,6 +383,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5378CDB19682D3B00819AAD /* blue_bg.png in Resources */,
 				A5D70CD51967CBF30076A2E6 /* Data.plist in Resources */,
 				F46EE251196735BB007D5D7E /* submit_bt@2x.png in Resources */,
 				A57209DB19656D3A00211066 /* Images.xcassets in Resources */,
@@ -387,6 +391,8 @@
 				F46EE249196735BB007D5D7E /* icon_tab_create_selected.png in Resources */,
 				F41C3EDD1966B5FD009F6D85 /* choose_city.png in Resources */,
 				F46EE2571967365D007D5D7E /* navbar_fullscreen@2x.png in Resources */,
+				A5378CDC19682D4300819AAD /* btn_login.png in Resources */,
+				A5378CDD19682D7B00819AAD /* img_textfield.png in Resources */,
 				F46EE24C196735BB007D5D7E /* icon_tab_sync_selected@2x.png in Resources */,
 				F46EE250196735BB007D5D7E /* submit_bt.png in Resources */,
 				F4D49D30196664BB0069A649 /* img-del.png in Resources */,

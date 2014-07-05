@@ -87,9 +87,15 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     self.stepsTextView.delegate = self;
     self.statusReasonTextView.delegate = self;
     self.resolutionTextView.delegate = self;
-
+    
+    self.summaryTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
+    self.descriptionTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
+    self.stepsTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
+    self.statusReasonTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
+    self.resolutionTextView.backgroundColor = [UIColor colorWithRed:241/255 green:241/255 blue:241/255 alpha:0.1];
     
 }
+
 -(void)viewWillAppear:(BOOL)animated{
     [self resetRemedyDetails];
     if (_isNewRemedy) {
