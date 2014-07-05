@@ -13,6 +13,7 @@
 #import "ACEDropDown.h"
 
 #import "AZUtils.h"
+#import "Base64.h"
 
 #define kKeyboardHeight @"352"
 
@@ -107,7 +108,7 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     _productType.titleLabel.text = @"";
     _productButton.titleLabel.text = @"";
     _summaryTextView.text = @"";
-    _summaryTextView.text = @"";
+    _descriptionTextView.text = @"";
     _priorityButton.titleLabel.text = @"";
     _statusButton.titleLabel.text = @"";
     _statusReasonTextView.text = @"";
@@ -130,7 +131,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     _statusReasonTextView.text = [remedyDetails valueForKey:@"StatusReason"];
     _resolutionTextView.text = [remedyDetails valueForKey:@"Resolution"];
     _stepsTextView.text = [remedyDetails valueForKey:@"StepsToReproduce"];
-    
+    _descriptionTextView.text = [remedyDetails valueForKey:@"description"];
+
 
 
 
@@ -311,7 +313,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
         
         [_eventMaterialArray removeAllObjects];
     }
-    [self reloadEventMaterial];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self reloadEventMaterial];
+    });
 }
 
 -(IBAction)showPicker:(id)sender{
@@ -416,15 +420,26 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
         resolutionValue = _resolutionTextView.text;
     }
     NSString *incidentType = @"";
-    if ([_resolutionTextView.text length] >0) {
+    if ([_incidentType.titleLabel.text length] >0) {
         incidentType = _incidentType.titleLabel.text;
     }
-    
+    NSString *desc = @"";
+    if ([_descriptionTextView.text length] >0) {
+        desc = _descriptionTextView.text;
+    }
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     df.dateStyle = NSDateFormatterMediumStyle;
     df.timeStyle = NSDateFormatterMediumStyle;
     [df setDateFormat:@"dd/MM/yyyy"];
     NSString* date = [df stringFromDate:[NSDate date]];
+   
+    NSMutableArray *imageArray = [[NSMutableArray alloc] init];
+    for (NSDictionary *imgDic in _eventMaterialArray) {
+        NSData* imageData = [NSData dataWithData:UIImagePNGRepresentation([imgDic objectForKey:@"image"])];
+        NSString *base64Str = [Base64 encode:imageData];
+        [imageArray addObject:base64Str];
+    }
+    
     
     //Key name is the incident id
     NSString *key = _incidentIdLabel.text;
@@ -439,8 +454,10 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
                            @"Status":statusValue,
                            @"StatusReason":statusReasonValue,
                            @"Resolution":resolutionValue,
-                            @"IncidentType":incidentType,
-                           @"CreatedDate":date};
+                           @"IncidentType":incidentType,
+                           @"description":desc,
+                           @"CreatedDate":date,
+                           @"image":imageArray};
     [AZUtils setPlistData:@"Data" key:key value:data];
     [[self navigationController] popToRootViewControllerAnimated:YES];
 

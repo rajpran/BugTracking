@@ -40,6 +40,7 @@
 		F46EE2561967365D007D5D7E /* navbar_fullscreen.png in Resources */ = {isa = PBXBuildFile; fileRef = F46EE2541967365D007D5D7E /* navbar_fullscreen.png */; };
 		F46EE2571967365D007D5D7E /* navbar_fullscreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F46EE2551967365D007D5D7E /* navbar_fullscreen@2x.png */; };
 		F46EE2581967F2B8007D5D7E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A57209D419656D3A00211066 /* Main.storyboard */; };
+		F46EE25B19682D7D007D5D7E /* Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = F46EE25A19682D7D007D5D7E /* Base64.m */; };
 		F4D49D1E196586B10069A649 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D1D196586B10069A649 /* HomeViewController.m */; };
 		F4D49D21196587E60069A649 /* RemedyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D20196587E60069A649 /* RemedyCell.m */; };
 		F4D49D2419659FB30069A649 /* AzSegmentationController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D2319659FB30069A649 /* AzSegmentationController.m */; };
@@ -113,6 +114,8 @@
 		F46EE248196735BB007D5D7E /* sync_logo_orange@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sync_logo_orange@2x.png"; sourceTree = "<group>"; };
 		F46EE2541967365D007D5D7E /* navbar_fullscreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = navbar_fullscreen.png; sourceTree = "<group>"; };
 		F46EE2551967365D007D5D7E /* navbar_fullscreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navbar_fullscreen@2x.png"; sourceTree = "<group>"; };
+		F46EE25919682D7D007D5D7E /* Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Base64.h; sourceTree = "<group>"; };
+		F46EE25A19682D7D007D5D7E /* Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Base64.m; sourceTree = "<group>"; };
 		F4D49D1C196586B00069A649 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ../HomeViewController.h; sourceTree = "<group>"; };
 		F4D49D1D196586B10069A649 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HomeViewController.m; path = ../HomeViewController.m; sourceTree = "<group>"; };
 		F4D49D1F196587E60069A649 /* RemedyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RemedyCell.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 		A5D70CD01967CA1B0076A2E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				F46EE25919682D7D007D5D7E /* Base64.h */,
+				F46EE25A19682D7D007D5D7E /* Base64.m */,
 				A5D70CDC1967FC640076A2E6 /* Images */,
 				A5D70CD91967EE5E0076A2E6 /* SVProgressHUD.h */,
 				A5D70CDA1967EE5E0076A2E6 /* SVProgressHUD.m */,
@@ -385,10 +390,6 @@
 				F46EE24C196735BB007D5D7E /* icon_tab_sync_selected@2x.png in Resources */,
 				F46EE250196735BB007D5D7E /* submit_bt.png in Resources */,
 				F4D49D30196664BB0069A649 /* img-del.png in Resources */,
-				A5D70CE11967FC800076A2E6 /* blue_bg.png in Resources */,
-				A5D70CE21967FC800076A2E6 /* btn_login.png in Resources */,
-				A5D70CE41967FC800076A2E6 /* img_textfield.png in Resources */,
-				A5D70CE31967FC800076A2E6 /* img_centerbg.png in Resources */,
 				F46EE24E196735BB007D5D7E /* save_bt.png in Resources */,
 				F46EE2581967F2B8007D5D7E /* Main.storyboard in Resources */,
 				A57209CD19656D3A00211066 /* InfoPlist.strings in Resources */,
@@ -424,6 +425,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F46EE25B19682D7D007D5D7E /* Base64.m in Sources */,
 				A5D70CD31967CA3B0076A2E6 /* AZUtils.m in Sources */,
 				F4D49D2419659FB30069A649 /* AzSegmentationController.m in Sources */,
 				F4D49D2D196661A20069A649 /* ESMAlertView.m in Sources */,
