@@ -16,6 +16,9 @@
     //Cretae plist file in documents directory to save the data
     [AZUtils setPlist:@"Data"];
     
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"navigation.png"]
+                                       forBarMetrics:UIBarMetricsDefault];
+    
     // Override point for customization after application launch.
     return YES;
 }
