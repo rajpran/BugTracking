@@ -109,6 +109,29 @@
 
 }
 -(void)searchRemedy:(NSDictionary *)searchData{
+    
+    NSLog(@"Search dict:%@",searchData);
+    
+    if (searchData && [[searchData allKeys] count] > 0) {
+        
+        NSMutableDictionary *filterDict = [[NSMutableDictionary alloc] init];
+        //Check for the keys having value without empty string and capture it in another dictionary
+        for (NSString *key in [searchData allKeys]) {
+            NSString *value = [searchData objectForKey:key];
+            if (![value isEqualToString:@""]) {
+                [filterDict setObject:value forKey:key];
+            }
+        }
+        
+        NSLog(@"Filtered Dict:%@",filterDict);
+        
+        
+        
+        NSArray *data = [_remediesDict allValues];
+        
+        
+        
+    }
 
 }
 - (IBAction)logOut:(id)sender {

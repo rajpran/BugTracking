@@ -326,14 +326,16 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     });
 }
 
--(IBAction)showPicker:(id)sender{
+-(IBAction)showPicker:(id)sender
+{
     if (lastselectedtag == [sender tag])
     {
         lastselectedtag = -1;
         [aCEDropDown removeFromSuperview];
         aCEDropDown = nil;
     }
-    else{
+    else
+    {
         clickedButton=(UIButton *)sender;
         aCEDropDown=[[ACEDropDown alloc]init];
         
@@ -345,22 +347,22 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
             categoryList=[lovValues objectAtIndex:[sender tag]];
         }
         
-        NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
-        [dict setObject:categoryList forKey:@"dataSource"];
-        [dict setObject:btnClicked forKey:@"button"];
-        aCEDropDown=[[ACEDropDown alloc]initWithDropDwon:dict ];
-        aCEDropDown.ddDelegate=self;
-        if ([sender tag]>2) {
-            [_rightView addSubview:aCEDropDown];
-        }else{
-            [_leftView addSubview:aCEDropDown];
+        if ([categoryList count] > 0) {
+            NSMutableDictionary *dict=[[NSMutableDictionary alloc]init];
+            [dict setObject:categoryList forKey:@"dataSource"];
+            [dict setObject:btnClicked forKey:@"button"];
+            aCEDropDown=[[ACEDropDown alloc]initWithDropDwon:dict ];
+            aCEDropDown.ddDelegate=self;
+            if ([sender tag]>2) {
+                [_rightView addSubview:aCEDropDown];
+            }else{
+                [_leftView addSubview:aCEDropDown];
+            }
+            lastselectedtag = [sender tag];
         }
-        lastselectedtag = [sender tag];
-        
-        
     }
-
 }
+
 -(void) selectedSingleOption:(NSDictionary *)selectedDict
 {
     lastselectedtag = -1;

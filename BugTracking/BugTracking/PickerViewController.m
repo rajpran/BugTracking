@@ -8,6 +8,7 @@
 
 #import "PickerViewController.h"
 #import "ACEDropDown.h"
+#import "AZUtils.h"
 
 @interface PickerViewController ()<UIPopoverControllerDelegate,ACEDropDownDelegate>{
     UIButton *clickedButton;
@@ -52,7 +53,7 @@
     [df setDateFormat:@"dd/MM/yyyy"];
     NSString* date = [df stringFromDate:[NSDate date]];
     NSLog(@"%@",date);
-    _dateButton.titleLabel.text = date;
+    //_dateButton.titleLabel.text = date;
 	// Do any additional setup after loading the view.
     
 }
@@ -174,14 +175,15 @@
 {
     lastselectedtag = -1;
 }
-- (IBAction)searchAction:(id)sender {
+- (IBAction)searchAction:(id)sender
+{
     NSMutableDictionary *searchDict = [[NSMutableDictionary alloc] init];
-    [searchDict setValue:_statusBtn.titleLabel.text forKey:@"Status"];
-    [searchDict setValue:_priorityBtn.titleLabel.text forKey:@"Priority"];
-    [searchDict setValue:_productBtn.titleLabel.text forKey:@"Product"];
-    [searchDict setValue:_requestIdTxt.text forKey:@"RequestId"];
-    [searchDict setValue:_statusBtn.titleLabel.text forKey:@"CreatedOn"];
-
+    
+    [searchDict setValue:[AZUtils checkForNull:_statusBtn.titleLabel.text] forKey:@"Status"];
+    [searchDict setValue:[AZUtils checkForNull:_priorityBtn.titleLabel.text] forKey:@"Priority"];
+    [searchDict setValue:[AZUtils checkForNull:_productBtn.titleLabel.text] forKey:@"Product"];
+    [searchDict setValue:[AZUtils checkForNull:_requestIdTxt.text] forKey:@"RequestId"];
+    [searchDict setValue:[AZUtils checkForNull:_dateButton.titleLabel.text] forKey:@"CreatedOn"];
     
     
     [_delegate searchRemedy:searchDict];

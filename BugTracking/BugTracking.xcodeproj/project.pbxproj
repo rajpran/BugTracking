@@ -11,6 +11,7 @@
 		A5378CDC19682D4300819AAD /* btn_login.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDE1967FC800076A2E6 /* btn_login.png */; };
 		A5378CDD19682D7B00819AAD /* img_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CE01967FC800076A2E6 /* img_textfield.png */; };
 		A5378CDE19683F0700819AAD /* img_centerbg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDF1967FC800076A2E6 /* img_centerbg.png */; };
+		A5378CE21968447400819AAD /* img_withfocusicon.png in Resources */ = {isa = PBXBuildFile; fileRef = A5378CE11968447400819AAD /* img_withfocusicon.png */; };
 		A57209C319656D3900211066 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C219656D3900211066 /* Foundation.framework */; };
 		A57209C519656D3900211066 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C419656D3900211066 /* CoreGraphics.framework */; };
 		A57209C719656D3900211066 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A57209C619656D3900211066 /* UIKit.framework */; };
@@ -73,6 +74,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A5378CE11968447400819AAD /* img_withfocusicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_withfocusicon.png; sourceTree = "<group>"; };
 		A57209BF19656D3900211066 /* BugTracking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BugTracking.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A57209C219656D3900211066 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		A57209C419656D3900211066 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -298,6 +300,7 @@
 		A5D70CDC1967FC640076A2E6 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				A5378CE11968447400819AAD /* img_withfocusicon.png */,
 				A5D70CE519681E6E0076A2E6 /* navigation.png */,
 				A5D70CDD1967FC800076A2E6 /* blue_bg.png */,
 				A5D70CDE1967FC800076A2E6 /* btn_login.png */,
@@ -389,6 +392,7 @@
 				F46EE251196735BB007D5D7E /* submit_bt@2x.png in Resources */,
 				A57209DB19656D3A00211066 /* Images.xcassets in Resources */,
 				F46EE24D196735BB007D5D7E /* login_btn.png in Resources */,
+				A5378CE21968447400819AAD /* img_withfocusicon.png in Resources */,
 				F46EE249196735BB007D5D7E /* icon_tab_create_selected.png in Resources */,
 				F41C3EDD1966B5FD009F6D85 /* choose_city.png in Resources */,
 				F46EE2571967365D007D5D7E /* navbar_fullscreen@2x.png in Resources */,

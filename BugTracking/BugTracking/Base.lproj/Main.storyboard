@@ -239,10 +239,10 @@
                                             <segue destination="2Rw-jF-VXc" kind="push" identifier="CreateNew" id="pFX-Lc-YR9"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qgN-rU-n1N">
-                                        <rect key="frame" x="899" y="9" width="26" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="qgN-rU-n1N">
+                                        <rect key="frame" x="898" y="5" width="40" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="S">
+                                        <state key="normal" image="img_withfocusicon.png">
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
@@ -654,7 +654,7 @@
                                 <rect key="frame" x="121" y="332" width="214" height="40"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <state key="normal" title="07/07/2014    " backgroundImage="choose_city.png">
+                                <state key="normal" backgroundImage="choose_city.png">
                                     <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
                                 </state>
                                 <connections>
@@ -736,6 +736,7 @@
         <image name="icon_tab_create_selected.png" width="30" height="30"/>
         <image name="img_centerbg.png" width="1024" height="568"/>
         <image name="img_textfield.png" width="288" height="48"/>
+        <image name="img_withfocusicon.png" width="40" height="40"/>
         <image name="submit_bt.png" width="64" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
