@@ -22,6 +22,11 @@
 		A57209EE19656D3A00211066 /* BugTrackingTests.m in Sources */ = {isa = PBXBuildFile; fileRef = A57209ED19656D3A00211066 /* BugTrackingTests.m */; };
 		A5D70CD31967CA3B0076A2E6 /* AZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D70CD21967CA3B0076A2E6 /* AZUtils.m */; };
 		A5D70CD51967CBF30076A2E6 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CD41967CBF30076A2E6 /* Data.plist */; };
+		A5D70CDB1967EE5E0076A2E6 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D70CDA1967EE5E0076A2E6 /* SVProgressHUD.m */; };
+		A5D70CE11967FC800076A2E6 /* blue_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDD1967FC800076A2E6 /* blue_bg.png */; };
+		A5D70CE21967FC800076A2E6 /* btn_login.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDE1967FC800076A2E6 /* btn_login.png */; };
+		A5D70CE31967FC800076A2E6 /* img_centerbg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDF1967FC800076A2E6 /* img_centerbg.png */; };
+		A5D70CE41967FC800076A2E6 /* img_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CE01967FC800076A2E6 /* img_textfield.png */; };
 		F41C3EDB1966A782009F6D85 /* ACEDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C3EDA1966A782009F6D85 /* ACEDropDown.m */; };
 		F41C3EDD1966B5FD009F6D85 /* choose_city.png in Resources */ = {isa = PBXBuildFile; fileRef = F41C3EDC1966B5FD009F6D85 /* choose_city.png */; };
 		F46EE249196735BB007D5D7E /* icon_tab_create_selected.png in Resources */ = {isa = PBXBuildFile; fileRef = F46EE23E196735BB007D5D7E /* icon_tab_create_selected.png */; };
@@ -88,6 +93,12 @@
 		A5D70CD11967CA3B0076A2E6 /* AZUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AZUtils.h; sourceTree = "<group>"; };
 		A5D70CD21967CA3B0076A2E6 /* AZUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AZUtils.m; sourceTree = "<group>"; };
 		A5D70CD41967CBF30076A2E6 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
+		A5D70CD91967EE5E0076A2E6 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		A5D70CDA1967EE5E0076A2E6 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		A5D70CDD1967FC800076A2E6 /* blue_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_bg.png; sourceTree = "<group>"; };
+		A5D70CDE1967FC800076A2E6 /* btn_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_login.png; sourceTree = "<group>"; };
+		A5D70CDF1967FC800076A2E6 /* img_centerbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_centerbg.png; sourceTree = "<group>"; };
+		A5D70CE01967FC800076A2E6 /* img_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_textfield.png; sourceTree = "<group>"; };
 		F41C3ED91966A776009F6D85 /* ACEDropDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEDropDown.h; sourceTree = "<group>"; };
 		F41C3EDA1966A782009F6D85 /* ACEDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDropDown.m; sourceTree = "<group>"; };
 		F41C3EDC1966B5FD009F6D85 /* choose_city.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = choose_city.png; sourceTree = "<group>"; };
@@ -267,11 +278,25 @@
 		A5D70CD01967CA1B0076A2E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A5D70CDC1967FC640076A2E6 /* Images */,
+				A5D70CD91967EE5E0076A2E6 /* SVProgressHUD.h */,
+				A5D70CDA1967EE5E0076A2E6 /* SVProgressHUD.m */,
 				A5D70CD11967CA3B0076A2E6 /* AZUtils.h */,
 				A5D70CD21967CA3B0076A2E6 /* AZUtils.m */,
 				A5D70CD41967CBF30076A2E6 /* Data.plist */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		A5D70CDC1967FC640076A2E6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A5D70CDD1967FC800076A2E6 /* blue_bg.png */,
+				A5D70CDE1967FC800076A2E6 /* btn_login.png */,
+				A5D70CDF1967FC800076A2E6 /* img_centerbg.png */,
+				A5D70CE01967FC800076A2E6 /* img_textfield.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -404,6 +429,7 @@
 				F41C3EDB1966A782009F6D85 /* ACEDropDown.m in Sources */,
 				F4D49D2A19665E070069A649 /* RemedyDetailsViewController.m in Sources */,
 				A57209D319656D3A00211066 /* ACEAppDelegate.m in Sources */,
+				A5D70CDB1967EE5E0076A2E6 /* SVProgressHUD.m in Sources */,
 				A57209CF19656D3A00211066 /* main.m in Sources */,
 				F4D49D1E196586B10069A649 /* HomeViewController.m in Sources */,
 				F4D49D2719665A8F0069A649 /* ESMImagePickerViewController.m in Sources */,
