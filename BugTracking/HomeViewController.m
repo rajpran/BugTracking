@@ -12,7 +12,7 @@
 #import "AZUtils.h"
 #import "RemedyDetailsViewController.h"
 
-@interface HomeViewController ()<UIPopoverControllerDelegate,SearchDelegate>
+@interface HomeViewController ()<UIPopoverControllerDelegate,SearchDelegate,UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *remedyTableView;
 @property (weak, nonatomic) IBOutlet UILabel *RemedyId;
 @property (weak, nonatomic) IBOutlet UIView *titleView;
@@ -22,6 +22,7 @@
 - (IBAction)logOut:(id)sender;
 @property (strong, nonatomic) NSDictionary *remediesDict;
 @property (strong, nonatomic) NSArray *remedyKeysArray;
+@property (weak, nonatomic) NSString *incidentId;
 
 
 @end
@@ -85,7 +86,12 @@
     
     return cell;
 }
-
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    RemedyDetailsViewController *remedyViewController = [storyBoard instantiateViewControllerWithIdentifier:@"RemedyDetailsViewController"];
+    [[self navigationController] pushViewController:remedyViewController animated:YES];
+    remedyViewController.incidentID = [_remedyKeysArray objectAtIndex:indexPath.row];
+}
 - (IBAction)showSearchPicker:(id)sender {
     
     UIButton *button = (UIButton*)sender;
@@ -114,9 +120,11 @@
     RemedyDetailsViewController *controller = (RemedyDetailsViewController *)segue.destinationViewController;
     if ([segue.identifier isEqualToString:@"CreateNew"]) {
         controller.isNewRemedy = YES;
-    } else if ([segue.identifier isEqualToString:@"Details"]) {
-        controller.isNewRemedy = NO;
-
     }
+//    } else if ([segue.identifier isEqualToString:@"Details"]) {
+//        controller.isNewRemedy = NO;
+//        controller.incidentID  = _incidentId;
+//
+//    }
 }
 @end

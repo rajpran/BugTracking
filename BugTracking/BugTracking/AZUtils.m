@@ -62,5 +62,11 @@
     NSMutableDictionary *data = [[NSMutableDictionary alloc] initWithContentsOfFile: path];
     return data;
 }
-
++(NSString*)checkForNull:(NSString*)string{
+    NSString *returnString = @"";
+    if (string != nil && ![string isKindOfClass:[NSNull class]]) {
+        returnString = string;
+    }
+    return returnString;
+}
 @end

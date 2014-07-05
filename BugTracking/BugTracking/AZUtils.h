@@ -15,4 +15,5 @@
 +(void)setPlistData:(NSString *)strPlistName key:(NSString *)key value:(NSDictionary *)strValue;
 +(id)getPlistData:(NSString *)strPlistName key:(NSString *)key;
 + (id)getCompletePlistData;
++(NSString*)checkForNull:(NSString*)string;
 @end

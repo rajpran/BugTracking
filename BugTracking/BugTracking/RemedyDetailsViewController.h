@@ -18,5 +18,6 @@
 @property (strong, nonatomic) IBOutlet UIButton *materialCloseButton;
 @property(strong, nonatomic) UIPopoverController *pickerPopover;
 @property(assign,nonatomic) BOOL isNewRemedy;
+@property(strong,nonatomic) NSString *incidentID;
 - (void)deleteEventMaterial:(id)sender;
 @end

@@ -208,7 +208,6 @@
                                             <outlet property="remedyIDLabel" destination="jJe-o8-tEq" id="ScC-KJ-eCQ"/>
                                             <outlet property="statusLabel" destination="fE6-y2-dHM" id="y7J-v6-Nrr"/>
                                             <outlet property="summaryLabel" destination="0v0-om-qtv" id="HEe-hV-VkQ"/>
-                                            <segue destination="2Rw-jF-VXc" kind="push" identifier="Details" id="TYA-1w-42b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -286,7 +285,7 @@
         <!--Remedy Details View Controller - Remedy Details-->
         <scene sceneID="Zkf-yn-eUl">
             <objects>
-                <viewController id="2Rw-jF-VXc" customClass="RemedyDetailsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RemedyDetailsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="2Rw-jF-VXc" customClass="RemedyDetailsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="YRO-0U-vko">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -728,8 +727,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blue_bg.png" width="335" height="271"/>
+        <image name="btn_login.png" width="164" height="50"/>
         <image name="choose_city.png" width="238" height="44"/>
         <image name="icon_tab_create_selected.png" width="30" height="30"/>
+        <image name="img_centerbg.png" width="1024" height="568"/>
+        <image name="img_textfield.png" width="288" height="48"/>
         <image name="submit_bt.png" width="64" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
@@ -737,7 +740,4 @@
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
-    <inferredMetricsTieBreakers>
-        <segue reference="pFX-Lc-YR9"/>
-    </inferredMetricsTieBreakers>
 </document>

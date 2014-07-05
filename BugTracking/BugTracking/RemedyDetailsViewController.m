@@ -72,10 +72,56 @@
 	// Do any additional setup after loading the view.
 }
 -(void)viewWillAppear:(BOOL)animated{
+    [self resetRemedyDetails];
     if (_isNewRemedy) {
-        
-        
+        int randomNumber = arc4random_uniform(900000) + 100000;
+        _incidentIdLabel.text = [NSString stringWithFormat:@"INC%d",randomNumber];
+        _userIdLabel.text =[AZUtils checkForNull:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserName"]];
+    }else{
+        [self setRemedyValues];
     }
+}
+
+-(void)resetRemedyDetails{
+    _incidentIdLabel.text = @"";
+    _userIdLabel.text = @"";
+    _contactTextField.text = @"";
+    _productType.titleLabel.text = @"";
+    _productButton.titleLabel.text = @"";
+    _summaryTextView.text = @"";
+    _summaryTextView.text = @"";
+    _priorityButton.titleLabel.text = @"";
+    _statusButton.titleLabel.text = @"";
+    _statusReasonTextView.text = @"";
+    _resolutionTextView.text = @"";
+    _incidentType.titleLabel.text = @"";
+    _stepsTextView.text = @"";
+    
+    [_statusButton setTitle:@"-Select-" forState:UIControlStateNormal];
+    [_incidentType setTitle:@"-Select-" forState:UIControlStateNormal];
+    [_productType setTitle:@"-Select-" forState:UIControlStateNormal];
+    [_productButton setTitle:@"-Select-" forState:UIControlStateNormal];
+    [_priorityButton setTitle:@"-Select-" forState:UIControlStateNormal];
+}
+-(void)setRemedyValues{
+    NSDictionary *remedyDetails = [AZUtils getPlistData:@"Data" key:_incidentID];
+    _incidentIdLabel.text = [remedyDetails valueForKey:@"IncidentID"];
+    _userIdLabel.text = [remedyDetails valueForKey:@"UserID"];
+    _contactTextField.text = [remedyDetails valueForKey:@"Contact"];
+    _summaryTextView.text = [remedyDetails valueForKey:@"Summary"];
+    _statusReasonTextView.text = [remedyDetails valueForKey:@"StatusReason"];
+    _resolutionTextView.text = [remedyDetails valueForKey:@"Resolution"];
+    _stepsTextView.text = [remedyDetails valueForKey:@"StepsToReproduce"];
+    
+
+
+
+    [_statusButton setTitle:[remedyDetails valueForKey:@"Status"] forState:UIControlStateNormal];
+    [_incidentType setTitle:[remedyDetails valueForKey:@"IncidentType"] forState:UIControlStateNormal];
+    [_productType setTitle:[remedyDetails valueForKey:@"ProductType"] forState:UIControlStateNormal];
+    [_productButton setTitle:[remedyDetails valueForKey:@"Product"] forState:UIControlStateNormal];
+    [_priorityButton setTitle:[remedyDetails valueForKey:@"Priority"] forState:UIControlStateNormal];
+
 }
 - (void)didReceiveMemoryWarning
 {
