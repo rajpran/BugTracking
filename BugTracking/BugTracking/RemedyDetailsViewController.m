@@ -71,7 +71,12 @@
     [self setLovs];
 	// Do any additional setup after loading the view.
 }
-
+-(void)viewWillAppear:(BOOL)animated{
+    if (_isNewRemedy) {
+        
+        
+    }
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

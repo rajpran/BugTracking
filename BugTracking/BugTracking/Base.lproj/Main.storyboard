@@ -213,7 +213,7 @@
                                             <outlet property="remedyIDLabel" destination="jJe-o8-tEq" id="ScC-KJ-eCQ"/>
                                             <outlet property="statusLabel" destination="fE6-y2-dHM" id="y7J-v6-Nrr"/>
                                             <outlet property="summaryLabel" destination="0v0-om-qtv" id="HEe-hV-VkQ"/>
-                                            <segue destination="2Rw-jF-VXc" kind="push" id="TYA-1w-42b"/>
+                                            <segue destination="2Rw-jF-VXc" kind="push" identifier="Details" id="TYA-1w-42b"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -242,7 +242,7 @@
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <segue destination="2Rw-jF-VXc" kind="push" id="pFX-Lc-YR9"/>
+                                            <segue destination="2Rw-jF-VXc" kind="push" identifier="CreateNew" id="pFX-Lc-YR9"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="qgN-rU-n1N">

@@ -10,6 +10,7 @@
 #import "RemedyCell.h"
 #import "PickerViewController.h"
 #import "AZUtils.h"
+#import "RemedyDetailsViewController.h"
 
 @interface HomeViewController ()<UIPopoverControllerDelegate,SearchDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *remedyTableView;
@@ -106,5 +107,16 @@
 }
 - (IBAction)logOut:(id)sender {
     [[self navigationController] dismissViewControllerAnimated:YES completion:nil];
+}
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    //UINavigationController *navigationController = segue.destinationViewController;
+    RemedyDetailsViewController *controller = (RemedyDetailsViewController *)segue.destinationViewController;
+    if ([segue.identifier isEqualToString:@"CreateNew"]) {
+        controller.isNewRemedy = YES;
+    } else if ([segue.identifier isEqualToString:@"Details"]) {
+        controller.isNewRemedy = NO;
+
+    }
 }
 @end
