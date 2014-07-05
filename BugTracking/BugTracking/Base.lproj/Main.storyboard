@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6154.17" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6153.11"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -367,7 +367,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mobile App" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="vbE-78-TKA">
-                                        <rect key="frame" x="135" y="184" width="88" height="21"/>
+                                        <rect key="frame" x="135" y="184" width="88" height="26"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="highlightedColor"/>
@@ -524,9 +524,21 @@
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <connections>
                         <outlet property="addEventMaterialsbutton" destination="cI6-I5-yhi" id="DUD-jM-FLp"/>
+                        <outlet property="contactTextField" destination="bZ2-d8-RrO" id="46i-oy-Rjn"/>
+                        <outlet property="descriptionLabel" destination="cPw-GS-Uk6" id="lXD-Yr-b55"/>
+                        <outlet property="incidentLabel" destination="A0H-lV-xwe" id="eey-0A-jAo"/>
                         <outlet property="materialCloseButton" destination="9sB-n7-RnX" id="tNj-D5-P12"/>
                         <outlet property="materialImageView" destination="ntk-KR-lC0" id="iCc-0h-vMb"/>
                         <outlet property="materialsScrollView" destination="KpS-Fe-Rw1" id="n95-Hp-lPT"/>
+                        <outlet property="priorityLabel" destination="g2b-Ax-uSL" id="tYc-zA-EUo"/>
+                        <outlet property="productLabel" destination="1dA-by-77m" id="wC5-0t-kmH"/>
+                        <outlet property="productTypeLabel" destination="vbE-78-TKA" id="aCT-yV-sUW"/>
+                        <outlet property="resolutionLabel" destination="t7N-xM-FDL" id="7xJ-rQ-70q"/>
+                        <outlet property="statusLabel" destination="iOb-yh-bN7" id="cLN-Yz-6gl"/>
+                        <outlet property="statusReasonLabel" destination="eAG-nL-ZTn" id="Uqo-f0-YP3"/>
+                        <outlet property="stepsToReproduceLabel" destination="4Cb-AC-rVo" id="Jre-TW-Vd2"/>
+                        <outlet property="summaryLabel" destination="wkD-sa-9Sk" id="4GH-Ec-7DE"/>
+                        <outlet property="userIDLabel" destination="lLX-Cb-04P" id="0YA-VX-3YS"/>
                         <outlet property="viewToShowMaterial" destination="aCI-FT-ipm" id="Eyj-M7-2dA"/>
                     </connections>
                 </viewController>

@@ -7,11 +7,15 @@
 //
 
 #import "ACEAppDelegate.h"
+#import "AZUtils.h"
 
 @implementation ACEAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    //Cretae plist file in documents directory to save the data
+    [AZUtils setPlist:@"Data"];
+    
     // Override point for customization after application launch.
     return YES;
 }

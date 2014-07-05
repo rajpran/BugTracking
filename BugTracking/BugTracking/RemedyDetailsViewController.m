@@ -12,6 +12,8 @@
 #import "PickerViewController.h"
 #import "ACEDropDown.h"
 
+#import "AZUtils.h"
+
 @interface RemedyDetailsViewController ()<ESMImagePickerViewControllerDelegate,ACEDropDownDelegate>{
     UIButton *clickedButton;
     NSInteger lastselectedtag;
@@ -20,6 +22,24 @@
 @property(strong, nonatomic) ESMImagePickerViewController *imagePickerViewController;
 @property(strong, nonatomic) NSMutableArray *eventMaterialArray;
 -(void) selectedSingleOption:(NSString *)selectedDict;
+
+@property (weak, nonatomic) IBOutlet UILabel *incidentLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *userIDLabel;
+@property (weak, nonatomic) IBOutlet UITextField *contactTextField;
+@property (weak, nonatomic) IBOutlet UILabel *productTypeLabel;
+
+@property (weak, nonatomic) IBOutlet UILabel *productLabel;
+@property (weak, nonatomic) IBOutlet UITextView *summaryLabel;
+@property (weak, nonatomic) IBOutlet UITextView *descriptionLabel;
+@property (weak, nonatomic) IBOutlet UITextView *stepsToReproduceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *priorityLabel;
+@property (weak, nonatomic) IBOutlet UILabel *statusLabel;
+@property (weak, nonatomic) IBOutlet UITextView *statusReasonLabel;
+@property (weak, nonatomic) IBOutlet UITextView *resolutionLabel;
+
+
+
 @end
 
 @implementation RemedyDetailsViewController
@@ -234,6 +254,83 @@
 -(void) selectedSingleOption:(NSDictionary *)selectedDict
 {
     
+}
+
+
+- (void)saveDataInPlist
+{
+    //Capture all the data entered in screen and save it in plist file
+    
+    NSString *incidentValue = @"";
+    if ([self.incidentLabel.text length] > 0) {
+        incidentValue = self.incidentLabel.text;
+    }
+    
+    NSString *userIDValue = @"";
+    if ([self.userIDLabel.text length] > 0) {
+        userIDValue = self.userIDLabel.text;
+    }
+    
+    NSString *contactValue = @"";
+    if ([self.contactTextField.text length] > 0) {
+        contactValue = self.contactTextField.text;
+    }
+    
+    NSString *productTypeValue = @"";
+    if ([self.productTypeLabel.text length] > 0) {
+        productTypeValue = self.productTypeLabel.text;
+    }
+    
+    NSString *productValue = @"";
+    if ([self.productLabel.text length] > 0) {
+        productValue = self.productLabel.text;
+    }
+    
+    NSString *summaryValue = @"";
+    if ([self.summaryLabel.text length] > 0) {
+        summaryValue = self.summaryLabel.text;
+    }
+    
+    NSString *stepsToReproduceValue = @"";
+    if ([self.stepsToReproduceLabel.text length] > 0) {
+        stepsToReproduceValue = self.stepsToReproduceLabel.text;
+    }
+    
+    NSString *priorityValue = @"";
+    if ([self.priorityLabel.text length] > 0) {
+        priorityValue = self.priorityLabel.text;
+    }
+    
+    NSString *statusValue = @"";
+    if ([self.statusLabel.text length] > 0) {
+        statusValue = self.statusLabel.text;
+    }
+    
+    NSString *statusReasonValue = @"";
+    if ([self.statusReasonLabel.text length] > 0) {
+        statusReasonValue = self.statusReasonLabel.text;
+    }
+    
+    NSString *resolutionValue = @"";
+    if ([self.resolutionLabel.text length] >0) {
+        resolutionValue = self.resolutionLabel.text;
+    }
+    
+    //Key name is the incident id
+    NSString *key = self.incidentLabel.text;
+    NSDictionary *data = @{@"IncidentID": incidentValue,
+                           @"UserID":userIDValue,
+                           @"Contact":contactValue,
+                           @"ProductType":productTypeValue,
+                           @"Product":productValue,
+                           @"Summary":summaryValue,
+                           @"StepsToReproduce":stepsToReproduceValue,
+                           @"Priority":priorityValue,
+                           @"Status":statusValue,
+                           @"StatusReason":statusReasonValue,
+                           @"Resolution":resolutionValue};
+    
+    [AZUtils setPlistData:@"Data" key:key value:data];
 }
 
 @end
