@@ -47,6 +47,7 @@
 @property (weak, nonatomic) IBOutlet UITextView *stepsTextView;
 @property (weak, nonatomic) IBOutlet UITextView *statusReasonTextView;
 @property (weak, nonatomic) IBOutlet UITextView *resolutionTextView;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
 
 
 
@@ -104,8 +105,23 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
         int randomNumber = arc4random_uniform(900000) + 100000;
         _incidentIdLabel.text = [NSString stringWithFormat:@"INC%d",randomNumber];
         _userIdLabel.text =[AZUtils checkForNull:[[NSUserDefaults standardUserDefaults] objectForKey:@"UserName"]];
+        _submitBtn.tag = 0;
+        [_submitBtn setTitle:@"Submit" forState:UIControlStateNormal];
+        [self enableAllFields];
+        if([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserType"] isEqualToString:@"FieldUser"]){
+            [self enableFieldsTechnicalUser];
+            [self disableFieldsFiledUser];
+        }else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserType"] isEqualToString:@"TechicalUser"]){
+            [self enableFieldsFiledUser];
+            [self disableFieldsTechnicalUser];
+        }
+        
+
     }else{
         [self setRemedyValues];
+        [self disableAllFields];
+        _submitBtn.tag = 1;
+        [_submitBtn setTitle:@"Edit" forState:UIControlStateNormal];
     }
 }
 
@@ -124,11 +140,11 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     _incidentType.titleLabel.text = @"";
     _stepsTextView.text = @"";
     
-    [_statusButton setTitle:@"-Select-" forState:UIControlStateNormal];
-    [_incidentType setTitle:@"-Select-" forState:UIControlStateNormal];
-    [_productType setTitle:@"-Select-" forState:UIControlStateNormal];
-    [_productButton setTitle:@"-Select-" forState:UIControlStateNormal];
-    [_priorityButton setTitle:@"-Select-" forState:UIControlStateNormal];
+//    [_statusButton setTitle:@"-Select-" forState:UIControlStateNormal];
+//    [_incidentType setTitle:@"-Select-" forState:UIControlStateNormal];
+//    [_productType setTitle:@"-Select-" forState:UIControlStateNormal];
+//    [_productButton setTitle:@"-Select-" forState:UIControlStateNormal];
+//    [_priorityButton setTitle:@"-Select-" forState:UIControlStateNormal];
 }
 -(void)setRemedyValues{
     NSDictionary *remedyDetails = [AZUtils getPlistData:@"Data" key:_incidentID];
@@ -149,6 +165,19 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     [_productType setTitle:[remedyDetails valueForKey:@"ProductType"] forState:UIControlStateNormal];
     [_productButton setTitle:[remedyDetails valueForKey:@"Product"] forState:UIControlStateNormal];
     [_priorityButton setTitle:[remedyDetails valueForKey:@"Priority"] forState:UIControlStateNormal];
+    [_eventMaterialArray removeAllObjects];
+    if ([remedyDetails objectForKey:@"image"]) {
+        for (NSString *base64String in [remedyDetails objectForKey:@"image"]) {
+            NSData *imgData = [Base64 decode:base64String];
+            UIImage *materialImage = [UIImage imageWithData:imgData];
+            NSMutableDictionary *imageDic = [[NSMutableDictionary alloc] init];
+            [imageDic setObject:materialImage forKey:@"image"];
+            [imageDic setObject:@"" forKey:@"Id"];
+            [_eventMaterialArray addObject:imageDic];
+        }
+    }
+    
+        [self reloadEventMaterial];
 
 }
 - (void)didReceiveMemoryWarning
@@ -252,7 +281,9 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
     //[imageDic setObject:AzLocalizedString(@"AEmeetingDetailViewController1stPageButton", nil) forKey:@"type"];
     //[self deleteMaterialOnSaveSucess:selectedMaterialType];
     [_eventMaterialArray addObject:imageDic];
-    [self reloadEventMaterial];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self reloadEventMaterial];
+    });
 }
 - (void)reloadEventMaterial
 {
@@ -318,8 +349,8 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
             //NSMutableArray *deleteArray = [[NSMutableArray alloc] initWithArray:_eventMaterialArray];
             //[[EventManager sharedInstance] setObject:deleteArray forKey:kDeleteMateriaDetails];
         }
-        
-        [_eventMaterialArray removeAllObjects];
+        UIButton *btn = (UIButton*)sender;
+        [_eventMaterialArray removeObjectAtIndex:btn.tag];
     }
     dispatch_async(dispatch_get_main_queue(), ^{
         [self reloadEventMaterial];
@@ -474,7 +505,21 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
 }
 
 - (IBAction)submitRemedy:(id)sender {
-    [self saveDataInPlist];
+    UIButton *btn = (UIButton *)sender;
+    if (btn.tag == 1) {
+        _submitBtn.tag = 2;
+        [_submitBtn setTitle:@"Save" forState:UIControlStateNormal];
+        [self enableAllFields];
+        if([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserType"] isEqualToString:@"FieldUser"]){
+            [self enableFieldsTechnicalUser];
+            [self disableFieldsFiledUser];
+        }else if([[[NSUserDefaults standardUserDefaults] objectForKey:@"UserType"] isEqualToString:@"TechicalUser"]){
+            [self enableFieldsFiledUser];
+            [self disableFieldsTechnicalUser];
+        }
+    }else{
+        [self saveDataInPlist];
+    }
 }
 
 -(void) textViewDidBeginEditing:(UITextView *)textView {
@@ -546,5 +591,77 @@ static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
         return NO;
     }
     return YES;
+}
+-(void)disableAllFields{
+    _leftView.userInteractionEnabled = NO;
+    [_productType setBackgroundImage:nil forState:UIControlStateNormal];
+    //_productType.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+
+    [_productButton setBackgroundImage:nil forState:UIControlStateNormal];
+    [_incidentType setBackgroundImage:nil forState:UIControlStateNormal];
+    [_priorityButton setBackgroundImage:nil forState:UIControlStateNormal];
+    [_statusButton setBackgroundImage:nil forState:UIControlStateNormal];
+
+    
+    _stepsTextView.userInteractionEnabled = NO;
+    _descriptionTextView.userInteractionEnabled = NO;
+    _statusReasonTextView.userInteractionEnabled = NO;
+    _resolutionTextView.userInteractionEnabled = NO;
+    _addEventMaterialsbutton.hidden = YES;
+    for (UIView *subview in _materialsScrollView.subviews) {
+        if([subview isKindOfClass:[UIButton class]])
+            [subview removeFromSuperview];
+    }
+}
+-(void)enableAllFields{
+    _leftView.userInteractionEnabled = YES;
+    [_productType setBackgroundImage:[UIImage imageNamed:@"choose_city.png"] forState:UIControlStateNormal];
+    [_productButton setBackgroundImage:[UIImage imageNamed:@"choose_city.png"] forState:UIControlStateNormal];
+    [_incidentType setBackgroundImage:[UIImage imageNamed:@"choose_city.png"] forState:UIControlStateNormal];
+    [_priorityButton setBackgroundImage:[UIImage imageNamed:@"choose_city.png"] forState:UIControlStateNormal];
+    [_statusButton setBackgroundImage:[UIImage imageNamed:@"choose_city.png"] forState:UIControlStateNormal];
+    
+    _stepsTextView.userInteractionEnabled = YES;
+    _descriptionTextView.userInteractionEnabled = YES;
+    _statusReasonTextView.userInteractionEnabled = YES;
+    _resolutionTextView.userInteractionEnabled = YES;
+    _addEventMaterialsbutton.hidden = NO;
+    [self reloadEventMaterial];
+}
+-(void)disableFieldsFiledUser{
+    _resolutionTextView.userInteractionEnabled = NO;
+}
+-(void)enableFieldsFiledUser{
+    _resolutionTextView.userInteractionEnabled = YES;
+
+}
+-(void)disableFieldsTechnicalUser{
+    _productType.userInteractionEnabled = NO;
+    _productButton.userInteractionEnabled = NO;
+    [_productType setBackgroundImage:nil forState:UIControlStateNormal];
+    [_productButton setBackgroundImage:nil forState:UIControlStateNormal];
+    
+    _summaryTextView.userInteractionEnabled = NO;
+    _descriptionTextView.userInteractionEnabled = NO;
+    _stepsTextView.userInteractionEnabled = NO;
+    _addEventMaterialsbutton.hidden = YES;
+    for (UIView *subview in _materialsScrollView.subviews) {
+        if([subview isKindOfClass:[UIButton class]])
+            [subview removeFromSuperview];
+    }
+    _contactTextField.userInteractionEnabled = NO;
+}
+-(void)enableFieldsTechnicalUser{
+    _productType.userInteractionEnabled = YES;
+    _productButton.userInteractionEnabled = YES;
+    [_productType setBackgroundImage:[UIImage imageNamed:@"choose_city.png"] forState:UIControlStateNormal];
+    [_productButton setBackgroundImage:[UIImage imageNamed:@"choose_city.png"] forState:UIControlStateNormal];
+    
+    _summaryTextView.userInteractionEnabled = YES;
+    _descriptionTextView.userInteractionEnabled = YES;
+    _stepsTextView.userInteractionEnabled = YES;
+    _addEventMaterialsbutton.hidden = NO;
+    [self reloadEventMaterial];
+    _contactTextField.userInteractionEnabled = YES;
 }
 @end
