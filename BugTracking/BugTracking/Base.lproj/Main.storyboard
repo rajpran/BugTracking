@@ -47,6 +47,7 @@
                                 <state key="normal" title="LOGIN" backgroundImage="btn_login.png"/>
                                 <connections>
                                     <action selector="doLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z5v-TD-whP"/>
+                                    <segue destination="voJ-Bm-gqx" kind="modal" id="Bgh-fA-HtA"/>
                                 </connections>
                             </button>
                         </subviews>
