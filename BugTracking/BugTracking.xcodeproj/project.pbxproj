@@ -24,6 +24,10 @@
 		A5D70CD31967CA3B0076A2E6 /* AZUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D70CD21967CA3B0076A2E6 /* AZUtils.m */; };
 		A5D70CD51967CBF30076A2E6 /* Data.plist in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CD41967CBF30076A2E6 /* Data.plist */; };
 		A5D70CDB1967EE5E0076A2E6 /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = A5D70CDA1967EE5E0076A2E6 /* SVProgressHUD.m */; };
+		A5D70CE11967FC800076A2E6 /* blue_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDD1967FC800076A2E6 /* blue_bg.png */; };
+		A5D70CE21967FC800076A2E6 /* btn_login.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDE1967FC800076A2E6 /* btn_login.png */; };
+		A5D70CE31967FC800076A2E6 /* img_centerbg.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CDF1967FC800076A2E6 /* img_centerbg.png */; };
+		A5D70CE41967FC800076A2E6 /* img_textfield.png in Resources */ = {isa = PBXBuildFile; fileRef = A5D70CE01967FC800076A2E6 /* img_textfield.png */; };
 		F41C3EDB1966A782009F6D85 /* ACEDropDown.m in Sources */ = {isa = PBXBuildFile; fileRef = F41C3EDA1966A782009F6D85 /* ACEDropDown.m */; };
 		F4D49D1E196586B10069A649 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D1D196586B10069A649 /* HomeViewController.m */; };
 		F4D49D21196587E60069A649 /* RemedyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F4D49D20196587E60069A649 /* RemedyCell.m */; };
@@ -77,6 +81,10 @@
 		A5D70CD41967CBF30076A2E6 /* Data.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Data.plist; sourceTree = "<group>"; };
 		A5D70CD91967EE5E0076A2E6 /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
 		A5D70CDA1967EE5E0076A2E6 /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
+		A5D70CDD1967FC800076A2E6 /* blue_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blue_bg.png; sourceTree = "<group>"; };
+		A5D70CDE1967FC800076A2E6 /* btn_login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = btn_login.png; sourceTree = "<group>"; };
+		A5D70CDF1967FC800076A2E6 /* img_centerbg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_centerbg.png; sourceTree = "<group>"; };
+		A5D70CE01967FC800076A2E6 /* img_textfield.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = img_textfield.png; sourceTree = "<group>"; };
 		F41C3ED91966A776009F6D85 /* ACEDropDown.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ACEDropDown.h; sourceTree = "<group>"; };
 		F41C3EDA1966A782009F6D85 /* ACEDropDown.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACEDropDown.m; sourceTree = "<group>"; };
 		F4D49D1C196586B00069A649 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HomeViewController.h; path = ../HomeViewController.h; sourceTree = "<group>"; };
@@ -228,6 +236,7 @@
 		A5D70CD01967CA1B0076A2E6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				A5D70CDC1967FC640076A2E6 /* Images */,
 				A5D70CD91967EE5E0076A2E6 /* SVProgressHUD.h */,
 				A5D70CDA1967EE5E0076A2E6 /* SVProgressHUD.m */,
 				A5D70CD11967CA3B0076A2E6 /* AZUtils.h */,
@@ -235,6 +244,17 @@
 				A5D70CD41967CBF30076A2E6 /* Data.plist */,
 			);
 			name = Common;
+			sourceTree = "<group>";
+		};
+		A5D70CDC1967FC640076A2E6 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				A5D70CDD1967FC800076A2E6 /* blue_bg.png */,
+				A5D70CDE1967FC800076A2E6 /* btn_login.png */,
+				A5D70CDF1967FC800076A2E6 /* img_centerbg.png */,
+				A5D70CE01967FC800076A2E6 /* img_textfield.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -317,6 +337,10 @@
 				A5D70CD51967CBF30076A2E6 /* Data.plist in Resources */,
 				A57209DB19656D3A00211066 /* Images.xcassets in Resources */,
 				F4D49D30196664BB0069A649 /* img-del.png in Resources */,
+				A5D70CE11967FC800076A2E6 /* blue_bg.png in Resources */,
+				A5D70CE21967FC800076A2E6 /* btn_login.png in Resources */,
+				A5D70CE41967FC800076A2E6 /* img_textfield.png in Resources */,
+				A5D70CE31967FC800076A2E6 /* img_centerbg.png in Resources */,
 				A57209CD19656D3A00211066 /* InfoPlist.strings in Resources */,
 				A57209D619656D3A00211066 /* Main.storyboard in Resources */,
 				F4D49D31196664BB0069A649 /* img-del@2x.png in Resources */,
