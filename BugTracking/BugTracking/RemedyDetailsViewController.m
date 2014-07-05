@@ -14,11 +14,16 @@
 
 #import "AZUtils.h"
 
-@interface RemedyDetailsViewController ()<ESMImagePickerViewControllerDelegate,ACEDropDownDelegate>{
+#define kKeyboardHeight @"352"
+
+
+@interface RemedyDetailsViewController ()<ESMImagePickerViewControllerDelegate,ACEDropDownDelegate, UITextViewDelegate>{
     UIButton *clickedButton;
     NSInteger lastselectedtag;
     ACEDropDown * aCEDropDown;
     NSMutableArray *lovValues;
+    
+    CGFloat animatedDistance;
 }
 @property(strong, nonatomic) ESMImagePickerViewController *imagePickerViewController;
 @property(strong, nonatomic) NSMutableArray *eventMaterialArray;
@@ -50,6 +55,11 @@
 
 @implementation RemedyDetailsViewController
 
+static const CGFloat KEYBOARD_ANIMATION_DURATION = 0.3;
+static const CGFloat MINIMUM_SCROLL_FRACTION = 0.2;
+static const CGFloat MAXIMUM_SCROLL_FRACTION = 0.8;
+static const CGFloat LANDSCAPE_KEYBOARD_HEIGHT = 352;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -70,6 +80,14 @@
 	_materialsScrollView.layer.borderWidth = 1.0f;
     [self setLovs];
 	// Do any additional setup after loading the view.
+    
+    self.summaryTextView.delegate = self;
+    self.descriptionTextView.delegate = self;
+    self.stepsTextView.delegate = self;
+    self.statusReasonTextView.delegate = self;
+    self.resolutionTextView.delegate = self;
+
+    
 }
 -(void)viewWillAppear:(BOOL)animated{
     if (_isNewRemedy) {
@@ -384,5 +402,65 @@
 
 - (IBAction)submitRemedy:(id)sender {
     [self saveDataInPlist];
+}
+
+-(void) textViewDidBeginEditing:(UITextView *)textView {
+    
+    CGRect textFieldRect = [self.view.window convertRect:textView.bounds fromView:textView];
+    CGRect viewRect = [self.view.window convertRect:self.view.bounds fromView:self.view];
+    
+    CGFloat midline = textFieldRect.origin.y + 0.5 * textFieldRect.size.height;
+    CGFloat numerator = midline - viewRect.origin.y - MINIMUM_SCROLL_FRACTION * viewRect.size.height;
+    CGFloat denominator = (MAXIMUM_SCROLL_FRACTION - MINIMUM_SCROLL_FRACTION) * viewRect.size.height;
+    CGFloat heightFraction = numerator / denominator;
+    
+    if(heightFraction < 0.0){
+        
+        heightFraction = 0.0;
+        
+    }else if(heightFraction > 1.0){
+        
+        heightFraction = 1.0;
+    }
+    
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    if(orientation == UIInterfaceOrientationLandscapeLeft || orientation == UIInterfaceOrientationLandscapeRight){
+        
+        animatedDistance = floor(LANDSCAPE_KEYBOARD_HEIGHT * heightFraction);
+        
+    }
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y -= animatedDistance;
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    
+    [UIView commitAnimations];
+}
+
+- (void)textViewDidEndEditing:(UITextView *)textView{
+    
+    CGRect viewFrame = self.view.frame;
+    viewFrame.origin.y += animatedDistance;
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:KEYBOARD_ANIMATION_DURATION];
+    
+    [self.view setFrame:viewFrame];
+    [UIView commitAnimations];
+}
+
+-(BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text
+{
+    if([text isEqualToString:@"\n"])
+    {
+        [textView resignFirstResponder];
+        return NO;
+    }
+    return YES;
 }
 @end

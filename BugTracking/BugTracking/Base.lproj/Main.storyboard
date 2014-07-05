@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13D65" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="4514" systemVersion="13C64" targetRuntime="iOS.CocoaTouch.iPad" propertyAccessControl="none" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3747"/>
@@ -383,6 +383,9 @@
                                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="2Rw-jF-VXc" id="kz6-XI-bIL"/>
+                                        </connections>
                                     </textView>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Description:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="fWJ-RV-2wm">
                                         <rect key="frame" x="34" y="524" width="93" height="21"/>
@@ -728,8 +731,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="blue_bg.png" width="335" height="271"/>
+        <image name="btn_login.png" width="164" height="50"/>
         <image name="choose_city.png" width="238" height="44"/>
         <image name="icon_tab_create_selected.png" width="30" height="30"/>
+        <image name="img_centerbg.png" width="1024" height="568"/>
+        <image name="img_textfield.png" width="288" height="48"/>
         <image name="submit_bt.png" width="64" height="32"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
