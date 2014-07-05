@@ -53,7 +53,7 @@
             [[NSUserDefaults standardUserDefaults] setObject:@"Kamal" forKey:@"FirstName"];
             [[NSUserDefaults standardUserDefaults] setObject:@"kannan" forKey:@"LastName"];
             [[NSUserDefaults standardUserDefaults] setObject:@"+91 9884565895" forKey:@"Contact"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"Techical" forKey:@"UserType"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"TechicalUser" forKey:@"UserType"];
         }
         
 
