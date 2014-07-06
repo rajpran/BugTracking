@@ -70,6 +70,8 @@
     if (correctInput) {
         
         [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"UserName"];
+        [[NSUserDefaults standardUserDefaults] setObject:@"TechicalUser" forKey:@"UserType"];
+
         
         if ([_userNameTextField.text isEqualToString:@"kdsd708"]) {
             [[NSUserDefaults standardUserDefaults] setObject:@"Robert" forKey:@"FirstName"];
@@ -81,7 +83,6 @@
             [[NSUserDefaults standardUserDefaults] setObject:@"Kamal" forKey:@"FirstName"];
             [[NSUserDefaults standardUserDefaults] setObject:@"kannan" forKey:@"LastName"];
             [[NSUserDefaults standardUserDefaults] setObject:@"+91 9884565895" forKey:@"Contact"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"TechicalUser" forKey:@"UserType"];
         }
 
         
@@ -204,12 +205,20 @@
   namespaceURI:(NSString *)namespaceURI qualifiedName:
 (NSString *)qName attributes:(NSDictionary *)attributeDict
 {
+    
+    NSLog(@"Tag name:%@",elementName);
+    
+    
     NSString  *currentDescription = [NSString alloc];
     element=elementName;
     att=[attributeDict objectForKey:@"SystemCode"];
     
     if ([elementName isEqualToString:@"StatusCode"]) {
         self.serviceSuccuess = YES;
+    }
+    
+    if ([elementName isEqualToString:@"JobCode"]) {
+        [[NSUserDefaults standardUserDefaults] setObject:@"FieldUser" forKey:@"UserType"];
     }
     
 }
@@ -245,20 +254,14 @@
             [[NSUserDefaults standardUserDefaults] setObject:lastName forKey:@"LastName"];
         }
         
-        
-        
-        if (email && userName && firstName && lastName) {
+        if ([element isEqualToString:@"Value"]) {
             
-            [SVProgressHUD dismiss];
-            
-            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            HomeViewController *hVC = [storyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
-            UINavigationController *nVC = [[UINavigationController alloc] initWithRootViewController:hVC];
-            [self presentViewController:nVC animated:YES completion:nil];
+            NSLog(@"Contact is:%@",string);
+            [[NSUserDefaults standardUserDefaults] setObject:string forKey:@"Contact"];
         }
         
-    }else{
         
+    }else{
         
         [SVProgressHUD dismiss];
         
@@ -274,6 +277,16 @@
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
     NSLog(@"DidEndElement:%@",elementName);
+    
+    //After parsing the last tag show the home page
+    if ([elementName isEqualToString:@"soapenv:Envelope"]) {
+        [SVProgressHUD dismiss];
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        HomeViewController *hVC = [storyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        UINavigationController *nVC = [[UINavigationController alloc] initWithRootViewController:hVC];
+        [self presentViewController:nVC animated:YES completion:nil];
+    }
 }
 
 
