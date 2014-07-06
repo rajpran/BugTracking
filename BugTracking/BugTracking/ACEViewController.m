@@ -7,7 +7,7 @@
 //
 
 #import "ACEViewController.h"
-
+#import "HomeViewController.h"
 
 @interface ACEViewController ()<NSXMLParserDelegate>
 
@@ -16,6 +16,7 @@
 
 @property (nonatomic, copy) NSString *errorMessage;
 @property (nonatomic, strong) NSMutableData *webData;
+@property (nonatomic, assign) BOOL serviceSuccuess;
 
 - (IBAction)doLogin:(id)sender;
 
@@ -26,6 +27,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.serviceSuccuess = NO;
+    
     UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0,10, 0)];
     [_userNameTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_userNameTextField setLeftView:spacerView];
@@ -46,27 +50,11 @@
 
 - (IBAction)doLogin:(id)sender
 {
+    [SVProgressHUD showWithStatus:@"Loading.."];
     //Textfield validation
     BOOL correctInput = [self validateUserInput:[[self userNameTextField] text] password:[[self passwordTextField] text]];
     
     if (correctInput) {
-        [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"UserName"];
-        
-        if ([_userNameTextField.text isEqualToString:@"kdsd708"]) {
-            [[NSUserDefaults standardUserDefaults] setObject:@"Robert" forKey:@"FirstName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"Trempe" forKey:@"LastName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"+1 302 886 1021" forKey:@"Contact"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"FieldUser" forKey:@"UserType"];
-
-        }else if([_userNameTextField.text isEqualToString:@"knxz537"]){
-            [[NSUserDefaults standardUserDefaults] setObject:@"Kamal" forKey:@"FirstName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"kannan" forKey:@"LastName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"+91 9884565895" forKey:@"Contact"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"TechicalUser" forKey:@"UserType"];
-        }
-        
-
-
 
         NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://na.az.com/soaplatform\" xmlns:urn=\"urn:astrazeneca:na:Employee:services:EmployeeDataInitiatior:2\">\n"
                                "<soapenv:Header>\n"
@@ -117,11 +105,13 @@
             NSLog(@"NSURLConnection initWithRequest: Failed to return a connection.");
         
     }else{
+        [SVProgressHUD dismiss];
         //Clear password field
         self.passwordTextField.text = @"";
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Login Error" message:self.errorMessage delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
         [alert show];
     }
+
 }
 
 
@@ -160,7 +150,7 @@
 -(void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error
 {
     NSLog(@"ERROR with theConenction");
-    
+    [SVProgressHUD dismiss];
 }
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection
 {
@@ -187,42 +177,84 @@
     NSString  *currentDescription = [NSString alloc];
     element=elementName;
     att=[attributeDict objectForKey:@"SystemCode"];
+    
+    if ([elementName isEqualToString:@"StatusCode"]) {
+        self.serviceSuccuess = YES;
+    }
+    
 }
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
-    if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"EMAIL"])
+    
+    if (self.serviceSuccuess)
     {
-        email = string;
-         NSLog(@"email %@",email);
-        [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"Email"];
-    }
-    
-    if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"NT USERNAME"])
-    {
-        userName = string;
-        NSLog(@"User Name %@",userName);
-        [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"UserName"];
-    }
-    
-    if ([element isEqualToString:@"FirstName"]) {
-        firstName = string;
-        NSLog(@"First name is:%@",firstName);
-        [[NSUserDefaults standardUserDefaults] setObject:firstName forKey:@"FirstName"];
-    }
-    
-    if ([element isEqualToString:@"LastName"]) {
-        lastName = string;
-        NSLog(@"Last name is:%@",lastName);
-        [[NSUserDefaults standardUserDefaults] setObject:lastName forKey:@"LastName"];
+        if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"EMAIL"])
+        {
+            email = string;
+            NSLog(@"email %@",email);
+            [[NSUserDefaults standardUserDefaults] setObject:email forKey:@"Email"];
+        }
+        
+        if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"NT USERNAME"])
+        {
+            userName = string;
+            NSLog(@"User Name %@",userName);
+            [[NSUserDefaults standardUserDefaults] setObject:userName forKey:@"UserName"];
+        }
+        
+        if ([element isEqualToString:@"FirstName"]) {
+            firstName = string;
+            NSLog(@"First name is:%@",firstName);
+            [[NSUserDefaults standardUserDefaults] setObject:firstName forKey:@"FirstName"];
+        }
+        
+        if ([element isEqualToString:@"LastName"]) {
+            lastName = string;
+            NSLog(@"Last name is:%@",lastName);
+            [[NSUserDefaults standardUserDefaults] setObject:lastName forKey:@"LastName"];
+        }
+        
+        if (email && userName && firstName && lastName) {
+            
+            [SVProgressHUD dismiss];
+            
+            UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+            HomeViewController *hVC = [storyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+            UINavigationController *nVC = [[UINavigationController alloc] initWithRootViewController:hVC];
+            [self presentViewController:nVC animated:YES completion:nil];
+        }
+        
+    }else{
+        
+        [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"UserName"];
+        
+        if ([_userNameTextField.text isEqualToString:@"kdsd708"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:@"Robert" forKey:@"FirstName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"Trempe" forKey:@"LastName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"+1 302 886 1021" forKey:@"Contact"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"FieldUser" forKey:@"UserType"];
+            
+        }else if([_userNameTextField.text isEqualToString:@"knxz537"]){
+            [[NSUserDefaults standardUserDefaults] setObject:@"Kamal" forKey:@"FirstName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"kannan" forKey:@"LastName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"+91 9884565895" forKey:@"Contact"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"TechicalUser" forKey:@"UserType"];
+        }
+        
+        [SVProgressHUD dismiss];
+        
+        UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        HomeViewController *hVC = [storyBoard instantiateViewControllerWithIdentifier:@"HomeViewController"];
+        UINavigationController *nVC = [[UINavigationController alloc] initWithRootViewController:hVC];
+        [self presentViewController:nVC animated:YES completion:nil];
+
     }
     
 }
 - (void)parser:(NSXMLParser *)parser didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI qualifiedName:(NSString *)qName
 {
-    //if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"EMAIL"])
-        //NSLog(@"email %@",email);
-
+    NSLog(@"DidEndElement:%@",elementName);
 }
 
 @end

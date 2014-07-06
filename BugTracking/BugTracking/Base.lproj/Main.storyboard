@@ -38,7 +38,7 @@
                                 <rect key="frame" x="369" y="383" width="288" height="48"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="Dm7-9C-ren">
                                 <rect key="frame" x="403" y="452" width="219" height="50"/>
@@ -47,7 +47,6 @@
                                 <state key="normal" title="LOGIN" backgroundImage="btn_login.png"/>
                                 <connections>
                                     <action selector="doLogin:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Z5v-TD-whP"/>
-                                    <segue destination="voJ-Bm-gqx" kind="modal" id="Bgh-fA-HtA"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -92,7 +91,7 @@
         <!--Home View Controller - Remedy-->
         <scene sceneID="R77-SP-kRV">
             <objects>
-                <viewController title="Remedy" id="ghk-rm-paL" customClass="HomeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="HomeViewController" title="Remedy" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ghk-rm-paL" customClass="HomeViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="okW-iQ-xg4">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -102,13 +101,13 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <view key="tableHeaderView" autoresizesSubviews="NO" contentMode="scaleToFill" id="KlZ-Vh-DUN">
-                                    <rect key="frame" x="0.0" y="64" width="1024" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="1024" height="44"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 </view>
                                 <prototypes>
                                     <tableViewCell autoresizesSubviews="NO" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="RemedyCell" rowHeight="130" id="fNc-0D-Kd6" customClass="RemedyCell">
-                                        <rect key="frame" x="0.0" y="130" width="1024" height="130"/>
+                                        <rect key="frame" x="0.0" y="66" width="1024" height="130"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fNc-0D-Kd6" id="HPJ-nI-xTX">
                                             <rect key="frame" x="0.0" y="0.0" width="991" height="129"/>
@@ -300,7 +299,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iS6-bK-20X" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1394" y="-603"/>
+            <point key="canvasLocation" x="2332" y="-27"/>
         </scene>
         <!--Remedy Details View Controller - Remedy-->
         <scene sceneID="Zkf-yn-eUl">
@@ -763,7 +762,7 @@
         <!--Navigation Controller - IRemedy-->
         <scene sceneID="erJ-JP-CYz">
             <objects>
-                <navigationController title="IRemedy" definesPresentationContext="YES" id="voJ-Bm-gqx" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" title="IRemedy" definesPresentationContext="YES" useStoryboardIdentifierAsRestorationIdentifier="YES" id="voJ-Bm-gqx" sceneMemberID="viewController">
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     <navigationBar key="navigationBar" autoresizesSubviews="NO" contentMode="scaleToFill" id="ByE-pP-yqO">
                         <rect key="frame" x="0.0" y="-44" width="0.0" height="44"/>
@@ -777,9 +776,6 @@
                         <rect key="frame" x="0.0" y="960" width="768" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
-                    <connections>
-                        <segue destination="ghk-rm-paL" kind="relationship" relationship="rootViewController" id="G7V-cs-ufd"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Twm-p4-EPj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
