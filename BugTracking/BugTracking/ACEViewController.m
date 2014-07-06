@@ -9,7 +9,7 @@
 #import "ACEViewController.h"
 #import "HomeViewController.h"
 
-@interface ACEViewController ()<NSXMLParserDelegate>
+@interface ACEViewController ()<NSXMLParserDelegate, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITextField *userNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *passwordTextField;
@@ -38,8 +38,20 @@
 
     [_passwordTextField setLeftViewMode:UITextFieldViewModeAlways];
     [_passwordTextField setLeftView:spacerView1];
+    
+
+    self.userNameTextField.delegate = self;
+    self.passwordTextField.delegate = self;
 	
     // Do any additional setup after loading the view, typically from a nib.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    self.userNameTextField.text = @"";
+    self.passwordTextField.text = @"";
 }
 
 - (void)didReceiveMemoryWarning
@@ -50,11 +62,29 @@
 
 - (IBAction)doLogin:(id)sender
 {
+    
     [SVProgressHUD showWithStatus:@"Loading.."];
     //Textfield validation
     BOOL correctInput = [self validateUserInput:[[self userNameTextField] text] password:[[self passwordTextField] text]];
     
     if (correctInput) {
+        
+        [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"UserName"];
+        
+        if ([_userNameTextField.text isEqualToString:@"kdsd708"]) {
+            [[NSUserDefaults standardUserDefaults] setObject:@"Robert" forKey:@"FirstName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"Trempe" forKey:@"LastName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"+1 302 886 1021" forKey:@"Contact"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"FieldUser" forKey:@"UserType"];
+            
+        }else if([_userNameTextField.text isEqualToString:@"knxz537"]){
+            [[NSUserDefaults standardUserDefaults] setObject:@"Kamal" forKey:@"FirstName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"kannan" forKey:@"LastName"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"+91 9884565895" forKey:@"Contact"];
+            [[NSUserDefaults standardUserDefaults] setObject:@"TechicalUser" forKey:@"UserType"];
+        }
+
+        
 
         NSString *soapMessage = [NSString stringWithFormat:@"<soapenv:Envelope xmlns:soapenv=\"http://schemas.xmlsoap.org/soap/envelope/\" xmlns:soap=\"http://na.az.com/soaplatform\" xmlns:urn=\"urn:astrazeneca:na:Employee:services:EmployeeDataInitiatior:2\">\n"
                                "<soapenv:Header>\n"
@@ -186,6 +216,7 @@
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
     
+    
     if (self.serviceSuccuess)
     {
         if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"EMAIL"])
@@ -214,6 +245,8 @@
             [[NSUserDefaults standardUserDefaults] setObject:lastName forKey:@"LastName"];
         }
         
+        
+        
         if (email && userName && firstName && lastName) {
             
             [SVProgressHUD dismiss];
@@ -226,20 +259,6 @@
         
     }else{
         
-        [[NSUserDefaults standardUserDefaults] setObject:_userNameTextField.text forKey:@"UserName"];
-        
-        if ([_userNameTextField.text isEqualToString:@"kdsd708"]) {
-            [[NSUserDefaults standardUserDefaults] setObject:@"Robert" forKey:@"FirstName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"Trempe" forKey:@"LastName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"+1 302 886 1021" forKey:@"Contact"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"FieldUser" forKey:@"UserType"];
-            
-        }else if([_userNameTextField.text isEqualToString:@"knxz537"]){
-            [[NSUserDefaults standardUserDefaults] setObject:@"Kamal" forKey:@"FirstName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"kannan" forKey:@"LastName"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"+91 9884565895" forKey:@"Contact"];
-            [[NSUserDefaults standardUserDefaults] setObject:@"TechicalUser" forKey:@"UserType"];
-        }
         
         [SVProgressHUD dismiss];
         
@@ -256,5 +275,6 @@
 {
     NSLog(@"DidEndElement:%@",elementName);
 }
+
 
 @end
