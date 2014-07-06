@@ -122,6 +122,17 @@
 }
 
 - (IBAction)resetSearchData:(id)sender {
+    
+    //Reset the search data
+    
+    [self.statusBtn setTitle:@"" forState:UIControlStateNormal];
+    [self.priorityBtn setTitle:@"" forState:UIControlStateNormal];
+    [self.productBtn setTitle:@"" forState:UIControlStateNormal];
+    [self.dateButton setTitle:@"" forState:UIControlStateNormal];
+    self.requestIdTxt.text = @"";
+    
+    [_delegate searchRemedy:nil];
+    
 }
 -(IBAction)dateChange:(id)sender{
     

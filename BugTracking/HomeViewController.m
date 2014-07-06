@@ -21,7 +21,7 @@
 - (IBAction)showSearchPicker:(id)sender;
 @property (strong, nonatomic) UIDatePicker *datePicker;
 - (IBAction)logOut:(id)sender;
-@property (strong, nonatomic) NSDictionary *remediesDict;
+@property (strong, nonatomic) NSMutableDictionary *remediesDict;
 @property (strong, nonatomic) NSArray *remedyKeysArray;
 @property (weak, nonatomic) NSString *incidentId;
 @property (weak, nonatomic) IBOutlet UIButton *addNewBtn;
@@ -52,7 +52,7 @@
 	// Do any additional setup after loading the view.
 }
 -(void)setremedyData{
-    _remediesDict = [[NSDictionary alloc]init];
+    _remediesDict = [[NSMutableDictionary alloc]init];
     _remedyKeysArray = [[NSArray alloc]init];
     
     _remediesDict = [AZUtils getCompletePlistData];
@@ -75,12 +75,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return _remedyKeysArray.count;
+    return [[self.remediesDict allKeys] count];
 }
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     RemedyCell *cell = (RemedyCell *)[tableView dequeueReusableCellWithIdentifier:@"RemedyCell"];
-    NSDictionary *remedyDict = [_remediesDict objectForKey:[_remedyKeysArray objectAtIndex:indexPath.row]];
+    NSDictionary *remedyDict = [_remediesDict objectForKey:[[self.remediesDict allKeys] objectAtIndex:indexPath.row]];
     
     
     cell.summaryLabel.text = [remedyDict valueForKey:@"Summary"];
@@ -106,7 +106,7 @@
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     RemedyDetailsViewController *remedyViewController = [storyBoard instantiateViewControllerWithIdentifier:@"RemedyDetailsViewController"];
     [[self navigationController] pushViewController:remedyViewController animated:YES];
-    remedyViewController.incidentID = [_remedyKeysArray objectAtIndex:indexPath.row];
+    remedyViewController.incidentID = [[self.remediesDict allKeys] objectAtIndex:indexPath.row];
 }
 - (IBAction)showSearchPicker:(id)sender {
     
@@ -141,12 +141,40 @@
         
         NSLog(@"Filtered Dict:%@",filterDict);
         
+        if (filterDict && [[filterDict allKeys] count] > 0) {
+            //Prepare the predicate to filter
+            
+            NSArray *array = [_remediesDict allValues];
+            
+            NSMutableArray *predicates = [[NSMutableArray alloc] init];
+            
+            for (NSString *key in [filterDict allKeys]) {
+                NSString *str = [NSString stringWithFormat:@"%@ == '%@'",key,[filterDict objectForKey:key]];
+                [predicates addObject:[NSPredicate predicateWithFormat:str]];
+            }
+            
+            NSPredicate *compoundPredicate = [NSCompoundPredicate andPredicateWithSubpredicates:predicates];
+            
+             NSArray *filteredArray = [array filteredArrayUsingPredicate:compoundPredicate];
+            
+            [_remediesDict removeAllObjects];
+
+            if ([filteredArray count] > 0) {
+                
+                for (NSDictionary *obj in filteredArray) {
+                    [self.remediesDict setObject:obj forKey:[obj objectForKey:@"IncidentID"]];
+                }
+                
+                [_remedyTableView reloadData];
+
+            }
+            
+
+        }
         
-        
-        NSArray *data = [_remediesDict allValues];
-        
-        
-        
+    }else{
+        self.remediesDict = [AZUtils getCompletePlistData];
+        [self.remedyTableView reloadData];
     }
 
 }
