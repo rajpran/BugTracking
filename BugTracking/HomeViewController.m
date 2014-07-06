@@ -100,7 +100,7 @@
     if(indexPath.row % 2 == 0)
         cell.backgroundColor = [UIColor whiteColor];
     else
-        cell.backgroundColor = [UIColor colorWithRed:230.0/255.0 green:239.0/255.0 blue:246.0/255.0 alpha:0.2];
+        cell.backgroundColor = [UIColor colorWithRed:201.0/255.0 green:210.0/255.0 blue:203.0/255.0 alpha:0.2];
 }
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     UIStoryboard *storyBoard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
