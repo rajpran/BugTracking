@@ -225,7 +225,6 @@
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string
 {
     
-    
     if (self.serviceSuccuess)
     {
         if([element isEqualToString:@"EmployeeID"] && [att isEqualToString:@"EMAIL"])

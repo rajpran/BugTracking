@@ -165,10 +165,10 @@
                     [self.remediesDict setObject:obj forKey:[obj objectForKey:@"IncidentID"]];
                 }
                 
-                [_remedyTableView reloadData];
-
             }
+            [_remedyTableView reloadData];
             
+            self.remediesDict = [AZUtils getCompletePlistData];
 
         }
         

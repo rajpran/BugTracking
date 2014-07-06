@@ -142,7 +142,8 @@
     [df setDateFormat:@"dd/MM/yyyy"];
     NSString* date = [df stringFromDate:_datePicker.date];
     NSLog(@"%@",date);
-    _dateButton.titleLabel.text = date;
+    //_dateButton.titleLabel.text = date;
+    [self.dateButton setTitle:date forState:UIControlStateNormal];
 
 }
 
@@ -152,6 +153,15 @@
         [_pickerPopover dismissPopoverAnimated:YES];
         _pickerPopover=nil;
     }
+    
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    df.timeStyle = NSDateFormatterMediumStyle;
+    [df setDateFormat:@"dd/MM/yyyy"];
+    NSString* date = [df stringFromDate:_datePicker.date];
+    NSLog(@"%@",date);
+    //_dateButton.titleLabel.text = date;
+    [self.dateButton setTitle:date forState:UIControlStateNormal];
 }
 -(IBAction)showPicker:(id)sender{
     if (lastselectedtag == [sender tag])
@@ -194,7 +204,7 @@
     [searchDict setValue:[AZUtils checkForNull:_priorityBtn.titleLabel.text] forKey:@"Priority"];
     [searchDict setValue:[AZUtils checkForNull:_productBtn.titleLabel.text] forKey:@"Product"];
     [searchDict setValue:[AZUtils checkForNull:_requestIdTxt.text] forKey:@"RequestId"];
-    [searchDict setValue:[AZUtils checkForNull:_dateButton.titleLabel.text] forKey:@"CreatedOn"];
+    [searchDict setValue:[AZUtils checkForNull:_dateButton.titleLabel.text] forKey:@"CreatedDate"];
     
     
     [_delegate searchRemedy:searchDict];
